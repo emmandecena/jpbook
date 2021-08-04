@@ -1,25 +1,88 @@
 # Welcome
 
-Hello! I'm Emmanuel, a Philippine-based **R/Python developer** and **data scientist** specializing in energy markets and related industries. I provide end-to-end solutions for data analytics teams - from finding opportunities for product and process optimization, to deployment of data-driven applications to serve end users.
+Jupyter Book is an open source project for building beautiful,
+publication-quality books and documents from computational material.
 
-## Background and experience
+Here are some of the features of Jupyter Book:
 
-My technical background comes from over six (6) years of experience and advanced training in the energy industry: from electricity market trading and dispatch operations of thermal power plants to electrical systems design of gas processing plants. I obtained my postgraduate degree in energy from the University of Auckland, under full scholarship. See my <a href="https://www.ecdecena.com/resume-emmanuel-decena.pdf" target="_blank">**resume**</a> for more details.
+```{panels}
+:container: +full-width text-center
+:column: col-lg-6 px-2 py-2
+:card:
 
-```{image} ../images/id.jpg
-:alt: ID
-:class: bg-primary mb-1
-:width: 200px
-:align: center
+**[Publication-quality content](#)** ✍
+^^^
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+---
+**[Execute, cache, and insert computational content](#)** 🚀
+^^^
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+---
+**[Add interactivity to content and outputs](#)** ✨
+^^^
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temp. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+---
+**[Build books and articles in many formats](#)** 🎁
+^^^
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
 ```
 
-### Let's talk
-Whether your project is big or small, I’d love to discuss how I can help you solve your data challenges. Contact me at **+63-956-924-5530** *(WhatsApp, Viber or iMessage)* or send an email to **<a href="mailto:ecdecena@gmail.com?subject=Data Scientist - Energy Markets">ecdecena [at] gmail.com</a>**. Please note my timezone (GMT+8) as I may not be able to reply immediately. I look forward to hearing from you.  
+This documentation is organized into a few major sections.
 
-## Technical
+- **Tutorials** are step-by-step introductory guides to Jupyter Book.
+- **Topic Guides** cover specific areas in more depth, and are organized as discrete "how-to" sections.
+- **Reference** sections describe the API/syntax/etc of Jupyter Book in detail.
 
-* [](./london.ipynb)
-* [](./workflow.md)
-* [](./energymarket.ipynb)
-* [](./usgrid.ipynb)
-* [](./hrdatasetv14.ipynb)
+This website is built with Jupyter Book!
+Explore the chapters to the left to learn more!
+
+```{admonition} Learn more and get involved
+:class: tip full-width
+
+💡 [Open an issue](#)
+: We track enhancement requests, bug-reports, and to-do items via GitHub issues.
+
+💬 [Join the discussion](#)
+: We have community discussions, talk about ideas, and share general questions and feedback in our [community forum](#).
+
+👍 [Vote for new features](#)
+: The community provides feedback by adding a 👍 reaction to issues in our repositories.
+  You can find a list of the top issues [in the Executable Books issue leader board](#).
+
+🙌 [Join the community](#)
+: Jupyter Book is developed by the [Executable Books community](#).
+  We welcome anyone to join us in improving Jupyter Book and helping one another learn and create their books.
+  To join, check out our [contributing guide](#).
+```
+
+## Find the right documentation resources
+
+Here are a few pointers to help you get started.
+```{panels}
+:container: +full-width
+:column: col-lg-4 px-2 py-2
+---
+:header: bg-jb-one
+**Get started**
+^^^
+[**The Jupyter Book Gallery**](http://gallery.jupyterbook.org): A gallery of community books that have been created with Jupyter Book.
+
+[**The QuantEcon Python Lectures**](https://python.quantecon.org/intro.html): A full mathematical textbook built with a customer Jupyter Book theme.
+
+---
+:header: bg-jb-two
+
+**Learn more**
+^^^
+[**The Jupyter Book Gallery**](http://gallery.jupyterbook.org): A gallery of community books that have been created with Jupyter Book.
+
+[**The QuantEcon Python Lectures**](https://python.quantecon.org/intro.html): A full mathematical textbook built with a customer Jupyter Book theme.
+---
+:header: bg-jb-three
+
+**Be inspired**
+^^^
+[**The Jupyter Book Gallery**](http://gallery.jupyterbook.org): A gallery of community books that have been created with Jupyter Book.
+
+[**The QuantEcon Python Lectures**](https://python.quantecon.org/intro.html): A full mathematical textbook built with a customer Jupyter Book theme.
+```

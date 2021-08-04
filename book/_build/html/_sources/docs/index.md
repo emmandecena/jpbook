@@ -1,95 +1,88 @@
 # Welcome
 
-Hello! I'm Emmanuel, a Philippine-based **data scientist** specializing in energy markets and related industries.
+Jupyter Book is an open source project for building beautiful,
+publication-quality books and documents from computational material.
 
-Do you need help with a tough technical writing challenge such as:
+Here are some of the features of Jupyter Book:
 
- - working with your development team to design products that provide meaningful and relevant experiences to users?
- - creating standard operating procedures to capture knowledge and guide your staff to perform their jobs faster and better?
- - documenting your product or process so that your customers have quick success?
- - developing new internal or external web content?
- - taking on a writing job that your staff simply don’t have time for because your business is humming along and staff workload is already at full capacity?
+```{panels}
+:container: +full-width text-center
+:column: col-lg-6 px-2 py-2
+:card:
 
-or need help in generating content for your blog such as:
-
- - working with your development team to design products that provide meaningful and relevant experiences to users?
- - creating standard operating procedures to capture knowledge and guide your staff to perform their jobs faster and better?
-
-
-## My services
-
-​Whether you are self-publishing or you need help getting your book ready to approach a publisher, I will work with you to make your manuscript the best it can be. From a full copy-edit of your book to just checking spelling and grammar, I can help.
-
-I will work with you to make sure your writing flows, makes sense, and sounds as you intended it to, as well as to check that the spelling and grammar is correct and that your manuscript looks professional. ​
-
-
-I can provide content on the following subjects:
-
- - Technical reports and analysis
- - Training course material development - from a range of topics
- - Copyediting and proofreading - from literature reviews to
- - CV and resume writing
- - LinkedIn profile updating
-
- ​​Copy-editing is enhancing the writing to ensure the readers receive the intended message or story in the style that you prefer.
-
-Proofreading is correcting mistakes to ensure that there are no errors that could detract from the published book and that the manuscript looks polished and professional.
-
- My skills in technical writing and data analysis go hand-in-hand in crafting the perfect story,
- Whether you need
-
-## Background and experience
-
-My technical background comes from over seven (7) years of experience and advanced training in the energy industry: from electricity market trading and dispatch operations of thermal power plants to electrical systems design of gas processing plants.
-
-I also have university-level teaching experience, handling fundamentals of electrical engineering courses. I obtained my postgraduate degree in energy from the University of Auckland, under full scholarship. See my <a href="https://www.ecdecena.com/resume-emmanuel-decena.pdf" target="_blank">**resume**</a> for more details.
-
-```{image} ../images/id.jpg
-:alt: ID
-:class: bg-primary mb-1
-:width: 200px
-:align: center
+**[Publication-quality content](#)** ✍
+^^^
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+---
+**[Execute, cache, and insert computational content](#)** 🚀
+^^^
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+---
+**[Add interactivity to content and outputs](#)** ✨
+^^^
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temp. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+---
+**[Build books and articles in many formats](#)** 🎁
+^^^
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
 ```
 
-### Let's talk
-Whether your project is big or small, I’d love to discuss how I can help you solve your documentation challenges. Contact me at **+63-956-924-5530** *(WhatsApp or iMessage)* or send an *email* to **<a href="mailto:ecdecena@gmail.com?subject=Data Scientist - Energy Markets">ecdecena [at] gmail.com</a>**. Please note my timezone (GMT+8) as I may not be able to reply immediately. I look forward to hearing from you.  
+This documentation is organized into a few major sections.
 
-## Technical
+- **Tutorials** are step-by-step introductory guides to Jupyter Book.
+- **Topic Guides** cover specific areas in more depth, and are organized as discrete "how-to" sections.
+- **Reference** sections describe the API/syntax/etc of Jupyter Book in detail.
 
-* [](./london.ipynb)
-* [](./workflow.md)
-* [](./energymarket.ipynb)
-* [](./usgrid.ipynb)
-* [](./hrdatasetv14.ipynb)
+This website is built with Jupyter Book!
+Explore the chapters to the left to learn more!
 
-## Feature
+```{admonition} Learn more and get involved
+:class: tip full-width
 
-* [](./london.ipynb)
-* [](./workflow.md)
-* [](./energymarket.ipynb)
-* [](./usgrid.ipynb)
-* [](./hrdatasetv14.ipynb)
+💡 [Open an issue](#)
+: We track enhancement requests, bug-reports, and to-do items via GitHub issues.
 
-## Analytics
+💬 [Join the discussion](#)
+: We have community discussions, talk about ideas, and share general questions and feedback in our [community forum](#).
 
-* [](./london.ipynb)
-* [](./workflow.md)
-* [](./energymarket.ipynb)
-* [](./usgrid.ipynb)
-* [](./hrdatasetv14.ipynb)
+👍 [Vote for new features](#)
+: The community provides feedback by adding a 👍 reaction to issues in our repositories.
+  You can find a list of the top issues [in the Executable Books issue leader board](#).
 
-## Art
+🙌 [Join the community](#)
+: Jupyter Book is developed by the [Executable Books community](#).
+  We welcome anyone to join us in improving Jupyter Book and helping one another learn and create their books.
+  To join, check out our [contributing guide](#).
+```
 
-* [](./london.ipynb)
-* [](./workflow.md)
-* [](./energymarket.ipynb)
-* [](./usgrid.ipynb)
-* [](./hrdatasetv14.ipynb)
+## Find the right documentation resources
 
---
+Here are a few pointers to help you get started.
+```{panels}
+:container: +full-width
+:column: col-lg-4 px-2 py-2
+---
+:header: bg-jb-one
+**Get started**
+^^^
+[**The Jupyter Book Gallery**](http://gallery.jupyterbook.org): A gallery of community books that have been created with Jupyter Book.
 
-**Specialties**: mathematical optimization, statistics, data analysis, energy systems, and research
+[**The QuantEcon Python Lectures**](https://python.quantecon.org/intro.html): A full mathematical textbook built with a customer Jupyter Book theme.
 
-**Tools**: R, Python, Excel, Julia, Linux
+---
+:header: bg-jb-two
 
---
+**Learn more**
+^^^
+[**The Jupyter Book Gallery**](http://gallery.jupyterbook.org): A gallery of community books that have been created with Jupyter Book.
+
+[**The QuantEcon Python Lectures**](https://python.quantecon.org/intro.html): A full mathematical textbook built with a customer Jupyter Book theme.
+---
+:header: bg-jb-three
+
+**Be inspired**
+^^^
+[**The Jupyter Book Gallery**](http://gallery.jupyterbook.org): A gallery of community books that have been created with Jupyter Book.
+
+[**The QuantEcon Python Lectures**](https://python.quantecon.org/intro.html): A full mathematical textbook built with a customer Jupyter Book theme.
+```

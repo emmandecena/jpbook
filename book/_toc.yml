@@ -18,6 +18,6 @@ parts:
   chapters:
   - file: docs/visualization/tableau
   - file: docs/visualization/datastudio
-- caption: Personal Blog
+- caption: About
   chapters:
-  - file: docs/blog/blog
+  - file: docs/about/contact
