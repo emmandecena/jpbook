@@ -88,7 +88,7 @@
     </a>
 </div><form class="bd-search d-flex align-items-center" action="#" method="get">
   <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
     <div class="bd-toc-item active">
         <p class="caption">
@@ -98,19 +98,24 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="docs/whatis.html">
-   Loan Analysis
+  <a class="reference internal" href="docs/electricitymarkets/clearingprice.html">
+   Market clearning price
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="docs/electricitymarkets/iemop.html">
-   IEMOP data exporation
+  <a class="reference internal" href="docs/electricitymarkets/demand.html">
+   Demand
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="docs/electricitymarkets/mnm.html">
+   Market Network Model
   </a>
  </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
-  Data Science Tools
+  Optimization
  </span>
 </p>
 <ul class="nav bd-sidenav">
@@ -127,7 +132,24 @@
 </ul>
 <p class="caption">
  <span class="caption-text">
-  Mathematics
+  Statistics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="docs/visualization/tableau.html">
+   Tableau Dashboards
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="docs/visualization/datastudio.html">
+   Google Data Studio
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  References
  </span>
 </p>
 <ul class="nav bd-sidenav">
@@ -149,36 +171,23 @@
 </ul>
 <p class="caption">
  <span class="caption-text">
-  Data Visualization
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="docs/visualization/tableau.html">
-   Tableau Dashboards
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="docs/visualization/datastudio.html">
-   Google Data Studio
-  </a>
- </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  About
+  Contact me
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="docs/about/contact.html">
-   About
+   Info
   </a>
  </li>
 </ul>
 
     </div>
 </nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+</div>
 
 </div>
 
@@ -207,11 +216,6 @@
             <!-- Source interaction buttons -->
 
             <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
 
             <!-- Launch buttons -->
 
@@ -279,16 +283,6 @@
   <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
 
 
-    
-    <!-- Google Analytics -->
-    <script>
-      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-      ga('create', 'UA-175171081-1', 'auto');
-      ga('set', 'anonymizeIp', true);
-      ga('send', 'pageview');
-    </script>
-    <script async src='https://www.google-analytics.com/analytics.js'></script>
-    <!-- End Google Analytics -->
     
   </body>
 </html>

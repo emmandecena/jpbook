@@ -57,7 +57,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Workflow" href="workflow.html" />
-    <link rel="prev" title="IEMOP data exporation" href="electricitymarkets/iemop.html" />
+    <link rel="prev" title="Market Network Model" href="electricitymarkets/mnm.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -84,7 +84,7 @@
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
     <div class="bd-toc-item active">
         <p class="caption">
@@ -94,19 +94,24 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="whatis.html">
-   Loan Analysis
+  <a class="reference internal" href="electricitymarkets/clearingprice.html">
+   Market clearning price
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="electricitymarkets/iemop.html">
-   IEMOP data exporation
+  <a class="reference internal" href="electricitymarkets/demand.html">
+   Demand
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="electricitymarkets/mnm.html">
+   Market Network Model
   </a>
  </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
-  Data Science Tools
+  Optimization
  </span>
 </p>
 <ul class="current nav bd-sidenav">
@@ -123,7 +128,24 @@
 </ul>
 <p class="caption">
  <span class="caption-text">
-  Mathematics
+  Statistics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="visualization/tableau.html">
+   Tableau Dashboards
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="visualization/datastudio.html">
+   Google Data Studio
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  References
  </span>
 </p>
 <ul class="nav bd-sidenav">
@@ -145,36 +167,23 @@
 </ul>
 <p class="caption">
  <span class="caption-text">
-  Data Visualization
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="visualization/tableau.html">
-   Tableau Dashboards
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="visualization/datastudio.html">
-   Google Data Studio
-  </a>
- </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  About
+  Contact me
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="about/contact.html">
-   About
+   Info
   </a>
  </li>
 </ul>
 
     </div>
 </nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+</div>
 
 </div>
 
@@ -200,50 +209,11 @@
             </button>
             
             
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/docs/numpy.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
             <!-- Source interaction buttons -->
 
             <!-- Full screen (wrap in <a> to have style consistency -->
 
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
             <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/emmandecena/jupyterbook/master?urlpath=tree/book/docs/numpy.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
 
         </div>
 
@@ -494,10 +464,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.82144585, 0.06644286, 0.51962131],
-       [0.46517212, 0.70598351, 0.88386876],
-       [0.36088737, 0.85130472, 0.54153083],
-       [0.42934235, 0.22790383, 0.89276433]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.2211282 , 0.24298357, 0.08453469],
+       [0.27897565, 0.59871181, 0.45970661],
+       [0.8517717 , 0.23321146, 0.18700596],
+       [0.91188968, 0.46999787, 0.26724399]])
 </pre></div>
 </div>
 </div>
@@ -510,7 +480,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.46517212, 0.70598351, 0.88386876])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.27897565, 0.59871181, 0.45970661])
 </pre></div>
 </div>
 </div>
@@ -522,9 +492,9 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.94952427, 0.85130472, 0.99760078],
-       [0.91916522, 0.97372035, 0.94403343],
-       [0.92483655, 0.91922212, 0.95887881]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.91188968, 0.97088324, 0.82935853],
+       [0.86930693, 0.98015123, 0.96159656],
+       [0.98996196, 0.88875557, 0.94210601]])
 </pre></div>
 </div>
 </div>
@@ -565,7 +535,7 @@
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="electricitymarkets/iemop.html" title="previous page">IEMOP data exporation</a>
+    <a class='left-prev' id="prev-link" href="electricitymarkets/mnm.html" title="previous page">Market Network Model</a>
     <a class='right-next' id="next-link" href="workflow.html" title="next page">Workflow</a>
 
         </div>
@@ -591,16 +561,6 @@
   <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
 
 
-    
-    <!-- Google Analytics -->
-    <script>
-      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-      ga('create', 'UA-175171081-1', 'auto');
-      ga('set', 'anonymizeIp', true);
-      ga('send', 'pageview');
-    </script>
-    <script async src='https://www.google-analytics.com/analytics.js'></script>
-    <!-- End Google Analytics -->
     
   </body>
 </html>
