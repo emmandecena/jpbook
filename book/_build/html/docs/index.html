@@ -56,7 +56,7 @@
     <link rel="shortcut icon" href="../_static/favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Loan Analysis" href="whatis.html" />
+    <link rel="next" title="Market clearning price" href="electricitymarkets/clearingprice.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -83,7 +83,7 @@
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
     <div class="bd-toc-item active">
         <p class="caption">
@@ -93,19 +93,24 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="whatis.html">
-   Loan Analysis
+  <a class="reference internal" href="electricitymarkets/clearingprice.html">
+   Market clearning price
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="electricitymarkets/iemop.html">
-   IEMOP data exporation
+  <a class="reference internal" href="electricitymarkets/demand.html">
+   Demand
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="electricitymarkets/mnm.html">
+   Market Network Model
   </a>
  </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
-  Data Science Tools
+  Optimization
  </span>
 </p>
 <ul class="nav bd-sidenav">
@@ -122,7 +127,24 @@
 </ul>
 <p class="caption">
  <span class="caption-text">
-  Mathematics
+  Statistics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="visualization/tableau.html">
+   Tableau Dashboards
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="visualization/datastudio.html">
+   Google Data Studio
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  References
  </span>
 </p>
 <ul class="nav bd-sidenav">
@@ -144,36 +166,23 @@
 </ul>
 <p class="caption">
  <span class="caption-text">
-  Data Visualization
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="visualization/tableau.html">
-   Tableau Dashboards
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="visualization/datastudio.html">
-   Google Data Studio
-  </a>
- </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  About
+  Contact me
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="about/contact.html">
-   About
+   Info
   </a>
  </li>
 </ul>
 
     </div>
 </nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+</div>
 
 </div>
 
@@ -199,31 +208,9 @@
             </button>
             
             
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/docs/index.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
             <!-- Source interaction buttons -->
 
             <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
 
             <!-- Launch buttons -->
 
@@ -232,19 +219,6 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
-            </div>
-            <nav id="bd-toc-nav">
-                <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#find-the-right-documentation-resources">
-   Find the right documentation resources
-  </a>
- </li>
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -255,15 +229,14 @@
                 
   <div class="section" id="welcome">
 <h1>Welcome<a class="headerlink" href="#welcome" title="Permalink to this headline">¶</a></h1>
-<p>Jupyter Book is an open source project for building beautiful,
-publication-quality books and documents from computational material.</p>
-<p>Here are some of the features of Jupyter Book:</p>
+<p>This site is a collection of Jupyter notebooks demonstrating various data science and machine learning use cases across the energy and related industries, compiled by <a class="reference internal" href="about/contact.html"><span class="doc std std-doc">Emmanuel Decena</span></a>.</p>
+<p>Here are some of the features of this site:</p>
 <div class="sphinx-bs container pb-4 full-width text-center docutils">
 <div class="row docutils">
 <div class="d-flex col-lg-6 px-2 py-2 docutils">
 <div class="card w-100 docutils">
 <div class="card-header docutils">
-<p class="card-text"><strong><span class="xref myst">Publication-quality content</span></strong> ✍</p>
+<p class="card-text"><strong><span class="xref myst">Case studies on various datasets</span></strong> ✍</p>
 </div>
 <div class="card-body docutils">
 <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
@@ -273,7 +246,7 @@ publication-quality books and documents from computational material.</p>
 <div class="d-flex col-lg-6 px-2 py-2 docutils">
 <div class="card w-100 docutils">
 <div class="card-header docutils">
-<p class="card-text"><strong><span class="xref myst">Execute, cache, and insert computational content</span></strong> 🚀</p>
+<p class="card-text"><strong><span class="xref myst">Algorithms for optimization</span></strong> 🚀</p>
 </div>
 <div class="card-body docutils">
 <p class="card-text">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
@@ -283,7 +256,7 @@ publication-quality books and documents from computational material.</p>
 <div class="d-flex col-lg-6 px-2 py-2 docutils">
 <div class="card w-100 docutils">
 <div class="card-header docutils">
-<p class="card-text"><strong><span class="xref myst">Add interactivity to content and outputs</span></strong> ✨</p>
+<p class="card-text"><strong><span class="xref myst">Statistical learning techniques</span></strong> ✨</p>
 </div>
 <div class="card-body docutils">
 <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temp. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
@@ -293,7 +266,7 @@ publication-quality books and documents from computational material.</p>
 <div class="d-flex col-lg-6 px-2 py-2 docutils">
 <div class="card w-100 docutils">
 <div class="card-header docutils">
-<p class="card-text"><strong><span class="xref myst">Build books and articles in many formats</span></strong> 🎁</p>
+<p class="card-text"><strong><span class="xref myst">Review on Mathematics</span></strong> 💡</p>
 </div>
 <div class="card-body docutils">
 <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -302,37 +275,44 @@ publication-quality books and documents from computational material.</p>
 </div>
 </div>
 </div>
-<p>This documentation is organized into a few major sections.</p>
+<p>The notebooks are organized into a three major groups according to their content:</p>
 <ul class="simple">
-<li><p><strong>Tutorials</strong> are step-by-step introductory guides to Jupyter Book.</p></li>
-<li><p><strong>Topic Guides</strong> cover specific areas in more depth, and are organized as discrete “how-to” sections.</p></li>
-<li><p><strong>Reference</strong> sections describe the API/syntax/etc of Jupyter Book in detail.</p></li>
+<li><p><strong>Data Exploration</strong> demonstrate step-by-step data cleaning, wrangling, and visualization procedures.</p></li>
+<li><p><strong>Model Development</strong> cover specific machine learning algorithms in more depth to produce a working model.</p></li>
+<li><p><strong>Reference</strong> notebooks provide a review behind the theory and industry-specific knowledge.</p></li>
 </ul>
-<p>This website is built with Jupyter Book!
-Explore the chapters to the left to learn more!</p>
-<div class="tip full-width admonition">
-<p class="admonition-title">Learn more and get involved</p>
-<p>💡 <span class="xref myst">Open an issue</span>
-: We track enhancement requests, bug-reports, and to-do items via GitHub issues.</p>
-<p>💬 <span class="xref myst">Join the discussion</span>
-: We have community discussions, talk about ideas, and share general questions and feedback in our <span class="xref myst">community forum</span>.</p>
-<p>👍 <span class="xref myst">Vote for new features</span>
+<!--
+This website is built with Jupyter Book!
+Explore the chapters to the left to learn more!
+
+```{admonition} Learn more and get involved
+:class: tip full-width
+
+💡 [Open an issue](#)
+: We track enhancement requests, bug-reports, and to-do items via GitHub issues.
+
+💬 [Join the discussion](#)
+: We have community discussions, talk about ideas, and share general questions and feedback in our [community forum](#).
+
+👍 [Vote for new features](#)
 : The community provides feedback by adding a 👍 reaction to issues in our repositories.
-You can find a list of the top issues <span class="xref myst">in the Executable Books issue leader board</span>.</p>
-<p>🙌 <span class="xref myst">Join the community</span>
-: Jupyter Book is developed by the <span class="xref myst">Executable Books community</span>.
-We welcome anyone to join us in improving Jupyter Book and helping one another learn and create their books.
-To join, check out our <span class="xref myst">contributing guide</span>.</p>
-</div>
-<div class="section" id="find-the-right-documentation-resources">
-<h2>Find the right documentation resources<a class="headerlink" href="#find-the-right-documentation-resources" title="Permalink to this headline">¶</a></h2>
-<p>Here are a few pointers to help you get started.</p>
+  You can find a list of the top issues [in the Executable Books issue leader board](#).
+
+🙌 [Join the community](#)
+: Jupyter Book is developed by the [Executable Books community](#).
+  We welcome anyone to join us in improving Jupyter Book and helping one another learn and create their books.
+  To join, check out our [contributing guide](#).
+```
+
+## Find the right documentation resources
+-->
+<p>Here are some featured notebooks.</p>
 <div class="sphinx-bs container pb-4 full-width docutils">
 <div class="row docutils">
 <div class="d-flex col-lg-4 px-2 py-2 docutils">
 <div class="card w-100 shadow docutils">
 <div class="card-header bg-jb-one docutils">
-<p class="card-text"><strong>Get started</strong></p>
+<p class="card-text"><strong>Time Series Analysis</strong></p>
 </div>
 <div class="card-body docutils">
 <p class="card-text"><a class="reference external" href="http://gallery.jupyterbook.org"><strong>The Jupyter Book Gallery</strong></a>: A gallery of community books that have been created with Jupyter Book.</p>
@@ -343,7 +323,7 @@ To join, check out our <span class="xref myst">contributing guide</span>.</p>
 <div class="d-flex col-lg-4 px-2 py-2 docutils">
 <div class="card w-100 shadow docutils">
 <div class="card-header bg-jb-two docutils">
-<p class="card-text"><strong>Learn more</strong></p>
+<p class="card-text"><strong>Regression Analysis</strong></p>
 </div>
 <div class="card-body docutils">
 <p class="card-text"><a class="reference external" href="http://gallery.jupyterbook.org"><strong>The Jupyter Book Gallery</strong></a>: A gallery of community books that have been created with Jupyter Book.</p>
@@ -354,12 +334,11 @@ To join, check out our <span class="xref myst">contributing guide</span>.</p>
 <div class="d-flex col-lg-4 px-2 py-2 docutils">
 <div class="card w-100 shadow docutils">
 <div class="card-header bg-jb-three docutils">
-<p class="card-text"><strong>Be inspired</strong></p>
+<p class="card-text"><strong>Neural Networks</strong></p>
 </div>
 <div class="card-body docutils">
 <p class="card-text"><a class="reference external" href="http://gallery.jupyterbook.org"><strong>The Jupyter Book Gallery</strong></a>: A gallery of community books that have been created with Jupyter Book.</p>
 <p class="card-text"><a class="reference external" href="https://python.quantecon.org/intro.html"><strong>The QuantEcon Python Lectures</strong></a>: A full mathematical textbook built with a customer Jupyter Book theme.</p>
-</div>
 </div>
 </div>
 </div>
@@ -402,7 +381,7 @@ To join, check out our <span class="xref myst">contributing guide</span>.</p>
         
         <div class='prev-next-bottom'>
             
-    <a class='right-next' id="next-link" href="whatis.html" title="next page">Loan Analysis</a>
+    <a class='right-next' id="next-link" href="electricitymarkets/clearingprice.html" title="next page">Market clearning price</a>
 
         </div>
         
@@ -427,16 +406,6 @@ To join, check out our <span class="xref myst">contributing guide</span>.</p>
   <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
 
 
-    
-    <!-- Google Analytics -->
-    <script>
-      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-      ga('create', 'UA-175171081-1', 'auto');
-      ga('set', 'anonymizeIp', true);
-      ga('send', 'pageview');
-    </script>
-    <script async src='https://www.google-analytics.com/analytics.js'></script>
-    <!-- End Google Analytics -->
     
   </body>
 </html>

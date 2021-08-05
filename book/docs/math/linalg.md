@@ -4,11 +4,8 @@ Linear Algebra is perhaps the _most important_ branch of mathematics to learn be
 
 **This article assumes some background in abstract algebra and set theory**
 
-```{image} ../../images/620by500.jpg
-:alt: ID
-:class: bg-primary mb-1
-:align: center
-```
+
+
 
 ## What is an algebra?
 

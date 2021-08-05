@@ -3,21 +3,22 @@ root: docs/index
 parts:
 - caption: Case Studies
   chapters: 
-  - file: docs/whatis
-  - file: docs/electricitymarkets/iemop 
-- caption: Data Science Tools
+  - file: docs/electricitymarkets/clearingprice
+  - file: docs/electricitymarkets/demand 
+  - file: docs/electricitymarkets/mnm
+- caption: Optimization
   chapters:
   - file: docs/numpy
   - file: docs/workflow
-- caption: Mathematics
+- caption: Statistics
+  chapters:
+  - file: docs/visualization/tableau
+  - file: docs/visualization/datastudio
+- caption: References
   chapters:
   - file: docs/math/linalg
   - file: docs/math/bayes
   - file: docs/math/lp
-- caption: Data Visualization
-  chapters:
-  - file: docs/visualization/tableau
-  - file: docs/visualization/datastudio
-- caption: About
+- caption: Contact me
   chapters:
   - file: docs/about/contact
