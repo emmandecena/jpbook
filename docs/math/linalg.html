@@ -53,7 +53,7 @@
     </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]]}})</script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "displayMath": [["$$", "$$"], ["\\[", "\\]"]], "processEscapes": true}})</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -109,6 +109,35 @@
   <a class="reference internal" href="../electricitymarkets/mnm.html">
    Market Network Model
   </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../datasets/datasets.html">
+   Datasets
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../datasets/philenergy.html">
+     Philippine Electricity Market
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../datasets/philenergy/mps.html">
+       Market Prices and Schedules
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
  </li>
 </ul>
 <p class="caption">
@@ -228,25 +257,27 @@
             <nav id="bd-toc-nav">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#what-is-an-algebra">
-   What is an algebra?
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#vector-spaces">
    Vector Spaces
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#finite-dimensional-vector-spaces">
-   Finite-Dimensional Vector Spaces
-  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#finite-dimensional-vector-spaces">
+     Finite-Dimensional Vector Spaces
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#linear-maps">
    Linear Maps
   </a>
   <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#general-form-of-a-linear-map">
+     General form of a Linear Map
+    </a>
+   </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#matrices">
      Matrices
@@ -267,6 +298,16 @@
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#inner-product-spaces">
+   Inner Product Spaces
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#in-making-the-definition-of-a-vector-space-we-generalized-the-linear-structure-addition-and-scalar-multiplication-of-r2-and-r3-we-ignored-other-important-features-such-as-the-notions-of-length-and-angle-these-ideas-are-embedded-in-the-concept-we-now-investigate-inner-products">
+   In making the definition of a vector space, we generalized the linear structure (addition and scalar multiplication) of R2 and R3. We ignored other important features, such as the notions of length and angle. These ideas are embedded in the concept we now investigate, inner products
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#bibliography">
    Bibliography
   </a>
@@ -284,23 +325,25 @@
                 
   <div class="section" id="linear-algebra">
 <h1>Linear Algebra<a class="headerlink" href="#linear-algebra" title="Permalink to this headline">¶</a></h1>
-<p>Linear Algebra is perhaps the <em>most important</em> branch of mathematics to learn because of its applications in several engineering disciplines.</p>
-<p><strong>This article assumes some background in abstract algebra and set theory</strong></p>
-<div class="section" id="what-is-an-algebra">
-<h2>What is an algebra?<a class="headerlink" href="#what-is-an-algebra" title="Permalink to this headline">¶</a></h2>
 <p><strong>Algebra</strong> is the study of mathematical <strong>objects</strong> and the <strong>rules</strong> to manipulate those objects.</p>
 <ul class="simple">
-<li><p>An <strong>algebraic structure</strong> consists of an arbitrary <strong>set</strong> with certain <strong>operations</strong> defined on that set.</p></li>
-<li><p>An <strong>operation</strong> is a rule or a way of combining any two members of the set to produce a unique third member of the set.</p></li>
+<li><p>Mathematical objects called <strong>algebraic structures</strong> consist of an arbitrary <strong>set</strong> <em>(objects)</em> with certain operations <em>(rules)</em> defined on that set.</p></li>
+<li><p>A rule to manipulate algebraic structures is called an <strong>operation</strong> – a way of combining any two members of the set to produce a unique third member of the set.</p></li>
 </ul>
-<p><strong>Linear algebra</strong> is the study of <strong>vector spaces</strong> – an algebraic structure consisting of <strong>fields</strong> and its <strong>operations</strong>.</p>
-</div>
+<p><strong>Linear algebra</strong> is the study of <strong>vector spaces</strong> – an algebraic structure consisting of <strong>vectors</strong> and its <strong>operations</strong>.</p>
 <div class="section" id="vector-spaces">
 <h2>Vector Spaces<a class="headerlink" href="#vector-spaces" title="Permalink to this headline">¶</a></h2>
-<p>First, we define a vector space – the primary mathematical structure that we will be studying.</p>
+<p>Definition of operations as a function on a set $V$.</p>
 <div class="admonition-definition admonition">
 <p class="admonition-title">Definition</p>
-<p>A <strong>vector space</strong> is a set <strong>V</strong> along with an <strong>addition</strong> on <strong>V</strong> and a <strong>scalar multiplication</strong> on <strong>V</strong> such that the following properties hold:</p>
+<p>An <strong>addition on a set $V$</strong> is a function that assigns an element $u+v \in V$
+to each pair of elements $u$ and $v \in V$.</p>
+<p>A <strong>scalar multiplication on a set $V$</strong> is a function that assigns an element $\lambda v \in V$ to each $\lambda \in F$ and each $v \in V$, where $F$ denotes a scalar <a href="https://en.wikipedia.org/wiki/Field_(mathematics)" target="_blank">field</a> .</p>
+</div>
+<p>Definition of vector space – the primary mathematical structure studied in Linear Algebra<span id="id1">[<a class="reference internal" href="#id16">1</a>]</span>.</p>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Definition</p>
+<p>A <strong>vector space</strong> is a set of vectors $V$ along with an <strong>addition</strong> on $V$ and a <strong>scalar multiplication</strong> on $V$ with a scalar field $F$ such that the following properties hold:</p>
 <ul class="simple">
 <li><p>commutativity</p></li>
 <li><p>associativity</p></li>
@@ -310,43 +353,78 @@
 <li><p>distributive properties</p></li>
 </ul>
 </div>
-<p><strong>We take a look of some examples of sets and operations that fit the definition of vector spaces.</strong></p>
+<p><strong>To check if a mathematical stucture is a vector space, we need to prove that the properties hold.</strong></p>
 <ol class="simple">
-<li><p>The set of Real Numbers $\mathbb{R}$</p></li>
+<li><p>The set of Real Numbers $\mathbb{R}$ with addition operation $+$</p></li>
 </ol>
-<p>Let $a, b \in \mathbb{R}$.</p>
+<p>Let $a, b \in \mathbb{R}$.
+Then, commutativity holds since $a + b = b + a \in \mathbb{R}$ and associativity holds since $(a + b) + c =  a + (b + c) \in \mathbb{R}$. Additive identity is $0 \in \mathbb{R}$ since $a + 0 = a \in \mathbb{R}$. Additive inverse is $-a \in \mathbb{R}$ since $a + -a = 0 \in \mathbb{R}$</p>
 <ol class="simple">
-<li><p>The set of Complex Numbers</p></li>
+<li><p>The set of n-tuples of real numbers denoted by $\mathbb{F}^{n}$ with element-wise addition operation $+$</p></li>
 </ol>
-<p>denoted by  $\mathbb{F}^{2}$</p>
-<ol class="simple">
-<li><p>The set of n-tuples of real numbers</p></li>
-</ol>
-<p>denoted by $\mathbb{F}^{n}$</p>
-</div>
 <div class="section" id="finite-dimensional-vector-spaces">
-<h2>Finite-Dimensional Vector Spaces<a class="headerlink" href="#finite-dimensional-vector-spaces" title="Permalink to this headline">¶</a></h2>
+<h3>Finite-Dimensional Vector Spaces<a class="headerlink" href="#finite-dimensional-vector-spaces" title="Permalink to this headline">¶</a></h3>
+<p>The concepts of <strong>linear combinations</strong>, <strong>span</strong>, <strong>independence</strong>, <strong>bases</strong>, and <strong>dimension</strong> of a list of vector spaces provide additional structure.</p>
 <div class="admonition-definition admonition">
 <p class="admonition-title">Definition</p>
-<p>The <strong>span</strong> of a vector space</p>
+<p>A <strong>linear combination</strong> of a list of vectors with length <em>m</em>, $v_{1}, … v_{m}$, is a vector in the form of $a_{1} v_{1}+…+a_{m} v_{m}$ where $a_{1},…,a_{m} \in F$</p>
 </div>
-<p>linear independence
-bases
-dimension</p>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Definition</p>
+<p>The <strong>set</strong> of all the linear combinations of a list of vectors is called the <strong>span</strong> of that list. Thus, the span of $v_{1}, … v_{m}$ can be denoted as:</p>
+<p>$$
+span(v_{1}, … v_{m}) = {a_{1} v_{1}+…+a_{m} v_{m} : a_{1},…,a_{m} \in F}
+$$</p>
+</div>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Definition</p>
+<p>A list of vectors with length $m$ is called <strong>linearly independent</strong> if the only choice of scalars that make the its linear combination equal to zero is if the scalars itself are zero. Otherwise the list of vectors are called <strong>linearly dependent</strong>.</p>
+</div>
+<p>From the definitions of <strong>span</strong>, <strong>independence</strong>, we define <strong>basis</strong>, and <strong>dimension</strong>.</p>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Definition</p>
+<p>A linearly independent list of vectors in $V$ that spans $V$ is called its <strong>basis</strong>. The length of this basis is called its <strong>dimension</strong>.</p>
+</div>
+</div>
 </div>
 <div class="section" id="linear-maps">
 <h2>Linear Maps<a class="headerlink" href="#linear-maps" title="Permalink to this headline">¶</a></h2>
+<p>From the properties and structure of vector spaces, functions (mappings) from one vector space to another called <strong>linear maps</strong> or <strong>linear transformations</strong> can now be defined.</p>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Definition</p>
+<p>A <strong>linear map</strong> or <strong>linear transformation</strong> from a vector space $V$ to another vector space $W$ is a function $T$ with two properties:</p>
+<ol class="simple">
+<li><p>Additivity - the linear map of a vector sum is a sum of linear maps
+$$
+T(u + v) = T(u) + T(v) \text{ for all } u,v \in V, T(u + v) = w \in W
+$$</p></li>
+<li><p>Homogeneity - the linear map of a scaled vector is the scaled linear map
+$$
+T(\lambda v) = \lambda T(v) \text{ for all } v \in V, \lambda \in F
+$$</p></li>
+</ol>
+</div>
+<div class="section" id="general-form-of-a-linear-map">
+<h3>General form of a Linear Map<a class="headerlink" href="#general-form-of-a-linear-map" title="Permalink to this headline">¶</a></h3>
+<p>$\text{Let } m, n &gt; 0 \in \mathbb{Z} \text{ and }A_{j,k} \in F \text{ for } j = 1, \ldots ,m \text{ and } k = 1,…,n.$</p>
+<p>$\text{A linear map } T \text{ from the set of all linear maps } \mathcal{L}(F^{n},F^{m}) \text{ has the general form: }$</p>
+<div class="math notranslate nohighlight" id="equation-linearmapgeneralform">
+<span class="eqno">(1)<a class="headerlink" href="#equation-linearmapgeneralform" title="Permalink to this equation">¶</a></span>\[T(x_{1},...,x_{n}) = (A_{1,1} x_{1}+ \cdots +A_{1,n} x_{n}, \ldots , A_{m,1} x_{1}+ \cdots +A_{m,n} x_{n})\]</div>
+<p><strong>Take note of the comma, centered dots and lowered dots</strong></p>
+</div>
 <div class="section" id="matrices">
 <h3>Matrices<a class="headerlink" href="#matrices" title="Permalink to this headline">¶</a></h3>
+<p>The properties in linear algebra can be expressed in terms of matrices to allow <strong>explicit computation</strong>.</p>
 <div class="admonition-definition admonition">
 <p class="admonition-title">Definition</p>
 <p>An <strong>m-by-n matrix</strong> is a rectangular array of elements of the field $F$ with $m$ rows and $n$ columns:</p>
-<div class="math notranslate nohighlight" id="equation-matrix">
-<span class="eqno">(1)<a class="headerlink" href="#equation-matrix" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{bmatrix} A_{1,1} &amp; \ldots &amp; A_{1,n} \\ \vdots &amp;  &amp; \vdots \\ A_{m,1} &amp; \ldots &amp; A_{m,n} \end{bmatrix}\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{bmatrix} A_{1,1} &amp; \ldots &amp; A_{1,n} \\ \vdots &amp;  &amp; \vdots \\ A_{m,1} &amp; \ldots &amp; A_{m,n} \end{bmatrix}\end{split}\]</div>
 </div>
 </div>
 <div class="section" id="matrix-of-a-linear-map">
 <h3>Matrix of a Linear Map<a class="headerlink" href="#matrix-of-a-linear-map" title="Permalink to this headline">¶</a></h3>
+<p>Matrices are used to <strong>represent</strong> linear maps</p>
 <div class="admonition-definition admonition">
 <p class="admonition-title">Definition</p>
 <p>Given a linear map $T \in \mathcal{L} \left( V, W \right)$ where $v_{1},\ldots,v_{n}$ is a basis of $V$ and $w_{1}, \ldots ,v_{m}$ is a basis of $W$, then the <strong>matrix of T</strong> consists of the scalars $A_{1,k}, \ldots  ,A_{m,k}$ needed to write the $k$th basis of $V$ as a linear combination of the basis vectors in $W$.</p>
@@ -359,27 +437,38 @@ dimension</p>
 <p>$$
 T(x, y) = (x+2y, 3x+4y, 5x+6y)
 $$</p>
-<p>This is a linear map that takes a 2-dimensional vector $v \in V$ into 3-dimensional space $w \in W$. The basis vectors of $V$ are $ \left[ \begin{smallmatrix} 1 \ 0 \end{smallmatrix} \right] $ and $ \left[ \begin{smallmatrix} 0 \ 1 \end{smallmatrix} \right] $ while basis vectors of $W$ are $ \left[ \begin{smallmatrix} 1 \ 0 \ 0 \end{smallmatrix} \right] $ , $ \left[ \begin{smallmatrix} 0 \ 1 \ 0\end{smallmatrix} \right] $ and $ \left[ \begin{smallmatrix} 0 \ 0 \ 1\end{smallmatrix} \right] $.</p>
+<p>This is a linear map that takes a 2-dimensional vector $v \in V$ into 3-dimensional space $w \in W$. The basis vectors of $V$ are $ \left[ \begin{smallmatrix} 1 \cr 0 \end{smallmatrix} \right] $ and $ \left[ \begin{smallmatrix} 0 \cr 1 \end{smallmatrix} \right] $ while basis vectors of $W$ are $ \left[ \begin{smallmatrix} 1 \cr 0 \cr 0 \end{smallmatrix} \right] $ , $ \left[ \begin{smallmatrix} 0 \cr 1 \cr 0\end{smallmatrix} \right] $ and $ \left[ \begin{smallmatrix} 0 \cr 0 \cr 1\end{smallmatrix} \right] $.</p>
 <p>Applying the map to the first basis vector in $V:$</p>
 <p>$$
 T(1, 0) = (1+0, 3+0, 5+0)
 $$</p>
 <p>Which can be written as a <strong>linear combination</strong> of the basis vectors in $W$:</p>
 <p>$$
-T\left[ \begin{smallmatrix} 1 \ 0 \end{smallmatrix} \right] = 1\left[ \begin{smallmatrix} 1 \ 0 \ 0\end{smallmatrix} \right] + 3\left[ \begin{smallmatrix} 0 \ 1 \ 0\end{smallmatrix} \right] + 5\left[ \begin{smallmatrix} 0 \ 0 \ 1\end{smallmatrix} \right]
+T\left[ \begin{smallmatrix} 1 \cr 0 \end{smallmatrix} \right] = 1\left[ \begin{smallmatrix} 1 \cr 0 \cr 0\end{smallmatrix} \right] + 3\left[ \begin{smallmatrix} 0 \cr 1 \cr 0\end{smallmatrix} \right] + 5\left[ \begin{smallmatrix} 0 \cr 0 \cr 1\end{smallmatrix} \right]
 $$</p>
 <p>Thus the matrix of this linear map $T$ is:</p>
 <p>$$
-\mathcal{M}(T) = \begin{bmatrix} 1 &amp; 2 \ 3 &amp; 4 \ 5 &amp; 6\end{bmatrix}
+\mathcal{M}(T) = \begin{bmatrix} 1 &amp; 2 \cr 3 &amp; 4 \cr 5 &amp; 6\end{bmatrix}
 $$</p>
-<p>A link to an equation directive: <a class="reference internal" href="#equation-matrixoflinearmap">(2)</a></p>
+<!--- A link to an equation directive: {eq}`matrixoflinearmap` --->
 </div>
 </div>
 </div>
-<hr class="docutils" />
+<div class="section" id="inner-product-spaces">
+<h2>Inner Product Spaces<a class="headerlink" href="#inner-product-spaces" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="in-making-the-definition-of-a-vector-space-we-generalized-the-linear-structure-addition-and-scalar-multiplication-of-r2-and-r3-we-ignored-other-important-features-such-as-the-notions-of-length-and-angle-these-ideas-are-embedded-in-the-concept-we-now-investigate-inner-products">
+<h2>In making the definition of a vector space, we generalized the linear structure (addition and scalar multiplication) of R2 and R3. We ignored other important features, such as the notions of length and angle. These ideas are embedded in the concept we now investigate, inner products<a class="headerlink" href="#in-making-the-definition-of-a-vector-space-we-generalized-the-linear-structure-addition-and-scalar-multiplication-of-r2-and-r3-we-ignored-other-important-features-such-as-the-notions-of-length-and-angle-these-ideas-are-embedded-in-the-concept-we-now-investigate-inner-products" title="Permalink to this headline">¶</a></h2>
+</div>
 <div class="section" id="bibliography">
 <h2>Bibliography<a class="headerlink" href="#bibliography" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="id1"></span></div>
+<p id="id2"><dl class="citation">
+<dt class="label" id="id16"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Sheldon Axler. <em>Linear algebra done right</em>. Springer, 2014.</p>
+</dd>
+</dl>
+</p>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
