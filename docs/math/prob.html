@@ -52,13 +52,11 @@
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "displayMath": [["$$", "$$"], ["\\[", "\\]"]], "processEscapes": true}})</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="LP" href="lp.html" />
+    <link rel="next" title="Computational Statistics" href="rstat.html" />
     <link rel="prev" title="Linear Algebra" href="linalg.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -110,6 +108,11 @@
    Market Network Model
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../visualization/tableau.html">
+   Tableau Dashboards
+  </a>
+ </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../datasets/datasets.html">
    Datasets
@@ -152,8 +155,8 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../workflow.html">
-   Workflow
+  <a class="reference internal" href="opti.html">
+   Simple Optimization
   </a>
  </li>
 </ul>
@@ -164,13 +167,8 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../visualization/tableau.html">
-   Tableau Dashboards
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../visualization/datastudio.html">
-   Google Data Studio
+  <a class="reference internal" href="stat.html">
+   Statistics
   </a>
  </li>
 </ul>
@@ -191,8 +189,13 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="lp.html">
-   LP
+  <a class="reference internal" href="rstat.html">
+   Computational Statistics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="or.html">
+   Operations Research
   </a>
  </li>
 </ul>
@@ -251,19 +254,6 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
-            </div>
-            <nav id="bd-toc-nav">
-                <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#bibliography">
-   Bibliography
-  </a>
- </li>
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -274,30 +264,6 @@
                 
   <div class="section" id="probability-theory">
 <h1>Probability Theory<a class="headerlink" href="#probability-theory" title="Permalink to this headline">¶</a></h1>
-<p>Working with these files can be a challenge, especially given their heterogeneous nature. Some preprocessing is required before they are ready for consumption by your CNN.</p>
-<p>Fortunately, I participated in the LUNA16 competition as part of a university course on computer aided diagnosis, so I have some experience working with these files. At this moment we top the leaderboard there :)</p>
-<p><strong>This article demonstrates aims to provide a comprehensive overview of useful steps to take before the data hits your ConvNet/other ML method.</strong></p>
-<p>What we will cover:</p>
-<ol class="simple">
-<li><p>Pre-processing: and adding missing metadata</p></li>
-<li><p>Exploratory Data Analysis: and what tissue these unit values correspond to</p></li>
-<li><p>Resampling to an isomorphic resolution to remove variance in scanner resolution.</p></li>
-</ol>
-<p>Here we write Ω for the sample space of all possible outcomes of an experiment. Ω can be a set
-containing anything (numbers, objects, colours etc.). An event is a subset of Ω. A probability
-measure is a real-valued function Pr defined on 2Ω (this is a power set, the set of all subsets of
-Ω), satisfying the following axioms</p>
-<p>$$
-\int_0^\infty \frac{x^3}{e^x-1},dx = \frac{\pi^4}{15}
-$$ (label3)</p>
-<p>A link to an equation directive: <a class="reference internal" href="#equation-my-label">(3)</a></p>
-<p>A link to an equation directive: <code class="xref eq docutils literal notranslate"><span class="pre">label3</span></code></p>
-<div class="math notranslate nohighlight" id="equation-my-label">
-<span class="eqno">(3)<a class="headerlink" href="#equation-my-label" title="Permalink to this equation">¶</a></span>\[w_{t+1} = (1 + r_{t+1}) s(w_t) + y_{t+1}\]</div>
-<hr class="docutils" />
-<div class="section" id="bibliography">
-<h2>Bibliography<a class="headerlink" href="#bibliography" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="id1"></span></div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -326,7 +292,7 @@ $$ (label3)</p>
         <div class='prev-next-bottom'>
             
     <a class='left-prev' id="prev-link" href="linalg.html" title="previous page">Linear Algebra</a>
-    <a class='right-next' id="next-link" href="lp.html" title="next page">LP</a>
+    <a class='right-next' id="next-link" href="rstat.html" title="next page">Computational Statistics</a>
 
         </div>
         

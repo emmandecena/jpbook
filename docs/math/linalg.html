@@ -58,8 +58,8 @@
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Probability Theory" href="bayes.html" />
-    <link rel="prev" title="Google Data Studio" href="../visualization/datastudio.html" />
+    <link rel="next" title="Probability Theory" href="prob.html" />
+    <link rel="prev" title="Statistics" href="stat.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -110,6 +110,11 @@
    Market Network Model
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../visualization/tableau.html">
+   Tableau Dashboards
+  </a>
+ </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../datasets/datasets.html">
    Datasets
@@ -152,8 +157,8 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../workflow.html">
-   Workflow
+  <a class="reference internal" href="opti.html">
+   Simple Optimization
   </a>
  </li>
 </ul>
@@ -164,13 +169,8 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../visualization/tableau.html">
-   Tableau Dashboards
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../visualization/datastudio.html">
-   Google Data Studio
+  <a class="reference internal" href="stat.html">
+   Statistics
   </a>
  </li>
 </ul>
@@ -186,13 +186,18 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="bayes.html">
+  <a class="reference internal" href="prob.html">
    Probability Theory
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="lp.html">
-   LP
+  <a class="reference internal" href="rstat.html">
+   Computational Statistics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="or.html">
+   Operations Research
   </a>
  </li>
 </ul>
@@ -301,11 +306,71 @@
   <a class="reference internal nav-link" href="#inner-product-spaces">
    Inner Product Spaces
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#in-making-the-definition-of-a-vector-space-we-generalized-the-linear-structure-addition-and-scalar-multiplication-of-r2-and-r3-we-ignored-other-important-features-such-as-the-notions-of-length-and-angle-these-ideas-are-embedded-in-the-concept-we-now-investigate-inner-products">
-   In making the definition of a vector space, we generalized the linear structure (addition and scalar multiplication) of R2 and R3. We ignored other important features, such as the notions of length and angle. These ideas are embedded in the concept we now investigate, inner products
-  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#inner-product">
+     Inner Product
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id2">
+       Example
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#norm">
+     Norm
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#induced-by-an-inner-product">
+       Induced by an inner product
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#not-induced-by-an-inner-product">
+       Not induced by an inner product
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#length-distance-and-metric">
+     Length, Distance and Metric
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#length-of-a-vector">
+       Length of a vector
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#distance-between-two-vectors">
+       Distance between two vectors
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#metric-of-a-vector-space">
+       Metric of a vector space
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#angles">
+     Angles
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#orthogonality">
+       Orthogonality
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#bibliography">
@@ -340,7 +405,7 @@
 to each pair of elements $u$ and $v \in V$.</p>
 <p>A <strong>scalar multiplication on a set $V$</strong> is a function that assigns an element $\lambda v \in V$ to each $\lambda \in F$ and each $v \in V$, where $F$ denotes a scalar <a href="https://en.wikipedia.org/wiki/Field_(mathematics)" target="_blank">field</a> .</p>
 </div>
-<p>Definition of vector space – the primary mathematical structure studied in Linear Algebra<span id="id1">[<a class="reference internal" href="#id16">1</a>]</span>.</p>
+<p>Definition of vector space – the primary mathematical structure studied in Linear Algebra<span id="id1">[<a class="reference internal" href="#id17">1</a>]</span>.</p>
 <div class="admonition-definition admonition">
 <p class="admonition-title">Definition</p>
 <p>A <strong>vector space</strong> is a set of vectors $V$ along with an <strong>addition</strong> on $V$ and a <strong>scalar multiplication</strong> on $V$ with a scalar field $F$ such that the following properties hold:</p>
@@ -409,7 +474,7 @@ $$</p></li>
 <p>$\text{Let } m, n &gt; 0 \in \mathbb{Z} \text{ and }A_{j,k} \in F \text{ for } j = 1, \ldots ,m \text{ and } k = 1,…,n.$</p>
 <p>$\text{A linear map } T \text{ from the set of all linear maps } \mathcal{L}(F^{n},F^{m}) \text{ has the general form: }$</p>
 <div class="math notranslate nohighlight" id="equation-linearmapgeneralform">
-<span class="eqno">(1)<a class="headerlink" href="#equation-linearmapgeneralform" title="Permalink to this equation">¶</a></span>\[T(x_{1},...,x_{n}) = (A_{1,1} x_{1}+ \cdots +A_{1,n} x_{n}, \ldots , A_{m,1} x_{1}+ \cdots +A_{m,n} x_{n})\]</div>
+<span class="eqno">(2)<a class="headerlink" href="#equation-linearmapgeneralform" title="Permalink to this equation">¶</a></span>\[T(x_{1},...,x_{n}) = (A_{1,1} x_{1}+ \cdots +A_{1,n} x_{n}, \ldots , A_{m,1} x_{1}+ \cdots +A_{m,n} x_{n})\]</div>
 <p><strong>Take note of the comma, centered dots and lowered dots</strong></p>
 </div>
 <div class="section" id="matrices">
@@ -429,7 +494,7 @@ $$</p></li>
 <p class="admonition-title">Definition</p>
 <p>Given a linear map $T \in \mathcal{L} \left( V, W \right)$ where $v_{1},\ldots,v_{n}$ is a basis of $V$ and $w_{1}, \ldots ,v_{m}$ is a basis of $W$, then the <strong>matrix of T</strong> consists of the scalars $A_{1,k}, \ldots  ,A_{m,k}$ needed to write the $k$th basis of $V$ as a linear combination of the basis vectors in $W$.</p>
 <div class="math notranslate nohighlight" id="equation-matrixoflinearmap">
-<span class="eqno">(2)<a class="headerlink" href="#equation-matrixoflinearmap" title="Permalink to this equation">¶</a></span>\[Tv_{k} = A_{1,k}w_{1} + \ldots + A_{m,k}w_{m}\]</div>
+<span class="eqno">(3)<a class="headerlink" href="#equation-matrixoflinearmap" title="Permalink to this equation">¶</a></span>\[Tv_{k} = A_{1,k}w_{1} + \ldots + A_{m,k}w_{m}\]</div>
 </div>
 <div class="section" id="example">
 <h4>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h4>
@@ -456,14 +521,100 @@ $$</p>
 </div>
 <div class="section" id="inner-product-spaces">
 <h2>Inner Product Spaces<a class="headerlink" href="#inner-product-spaces" title="Permalink to this headline">¶</a></h2>
+<p>This section adds the geometric notions of <strong>lengths</strong> and <strong>angles</strong> to the mathematical structure of vector spaces by defining an <strong>inner product</strong> on the vector space. Vector spaces with defined inner products are called <strong>inner product spaces.</strong></p>
+<div class="section" id="inner-product">
+<h3>Inner Product<a class="headerlink" href="#inner-product" title="Permalink to this headline">¶</a></h3>
+<p>Definition of inner product as a function from a <strong>tuple of vectors</strong> $(u,v) \in V$ to a <strong>scalar</strong> $\langle u, v \rangle \in F$.</p>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Definition</p>
+<p>An inner product defined on $V$ is a function that takes each ordered pair of vectors $(u,v) \in V$ to a scalar $\langle u, v \rangle \in F$, with the following properties:</p>
+<ol class="simple">
+<li><p>positivity - the inner product of a vector with <strong>itself</strong> is either positive or zero
+$$\forall v \in V, \langle v, v \rangle \geq 0$$</p></li>
+<li><p>definiteness - the inner product of the zero vector is zero
+$$\langle v, v \rangle = 0 \iff v = 0$$</p></li>
+<li><p>additivity in first slot
+$$\langle u+v, w \rangle = \langle u, w \rangle + \langle v, w \rangle \text{ for all } u, v, w \in V$$</p></li>
+<li><p>homogeneity in first slot
+$$\langle \lambda u, v \rangle = \lambda \langle u, v \rangle \text{ for all } u, v \in V \text{ and } \lambda \in F$$</p></li>
+<li><p>conjugate symmetry
+$$\langle u, v \rangle = \overline{ \langle v, u  \rangle } \text{ for all } u, v \in V$$</p></li>
+</ol>
 </div>
-<div class="section" id="in-making-the-definition-of-a-vector-space-we-generalized-the-linear-structure-addition-and-scalar-multiplication-of-r2-and-r3-we-ignored-other-important-features-such-as-the-notions-of-length-and-angle-these-ideas-are-embedded-in-the-concept-we-now-investigate-inner-products">
-<h2>In making the definition of a vector space, we generalized the linear structure (addition and scalar multiplication) of R2 and R3. We ignored other important features, such as the notions of length and angle. These ideas are embedded in the concept we now investigate, inner products<a class="headerlink" href="#in-making-the-definition-of-a-vector-space-we-generalized-the-linear-structure-addition-and-scalar-multiplication-of-r2-and-r3-we-ignored-other-important-features-such-as-the-notions-of-length-and-angle-these-ideas-are-embedded-in-the-concept-we-now-investigate-inner-products" title="Permalink to this headline">¶</a></h2>
+<div class="tip admonition">
+<p class="admonition-title">Note</p>
+<p><strong>Properties 1 and 2</strong>  - can be considered together as <strong>Positive definiteness</strong> property</p>
+<p><strong>Properties 3 and 4</strong>  - can be considered together as <strong>Linearity in first slot</strong> property</p>
+<p>For real vector spaces, <strong>Property 5</strong> simplifies to symmetry condition since every real number is equal to its complex conjugate: $\forall x \in \mathbb{R}, \overline{x} = x$</p>
 </div>
+<div class="section" id="id2">
+<h4>Example<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<ol class="simple">
+<li><p>Euclidean inner product on $F^n$, where $F$ can be $\mathbb{R}$ or $\mathbb{C}$, defined to be:</p></li>
+</ol>
+<p>$$
+\langle (w_{1}, \ldots, w_{n}), (z_{1}, \ldots, z_{n}) \rangle =   w_{1} \overline{z_{1}} + \cdots + w_{n} \overline{z_{n}}
+$$</p>
+<p>In other words, the sum of element-wise conjugate multiplication. If $F^n$ is just the reals, then this is also known as the <strong>dot product</strong>.</p>
+</div>
+</div>
+<div class="section" id="norm">
+<h3>Norm<a class="headerlink" href="#norm" title="Permalink to this headline">¶</a></h3>
+<p>The concept of a <strong>Norm</strong> is the notion of <strong>length</strong> or <strong>distance</strong> for vectors. An <strong>inner product induces</strong> a norm on a vector space. However, <strong>not every norm</strong> is induced by an inner product, such as the $\ell_{1}$ norm.</p>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Definition</p>
+<p>For $v \in V$, the induced norm of v, denoted by $\lVert v \rVert$ is defined:</p>
+<p>$$
+\lVert v \rVert = \sqrt{\langle v, v \rangle}
+$$</p>
+<p>This norm is not the only norm that can be defined for a vector space – this is just the <strong>induced norm</strong></p>
+</div>
+<div class="section" id="induced-by-an-inner-product">
+<h4>Induced by an inner product<a class="headerlink" href="#induced-by-an-inner-product" title="Permalink to this headline">¶</a></h4>
+<ol class="simple">
+<li><p>Euclidean norm or $\ell_{2}$ norm
+If $v \in F^{n}$ is defined with the Euclidean inner product:</p></li>
+</ol>
+<p>$$
+\lVert v \rVert = \sqrt{\sum_{i=1}^{n} {\lvert v_{i} \rvert}^{2}}
+$$</p>
+</div>
+<div class="section" id="not-induced-by-an-inner-product">
+<h4>Not induced by an inner product<a class="headerlink" href="#not-induced-by-an-inner-product" title="Permalink to this headline">¶</a></h4>
+<ol class="simple">
+<li><p>Manhattan norm or $\ell_{1}$ norm</p></li>
+</ol>
+<p>$$
+\lVert v \rVert = \sum_{i=1}^{n} {\lvert v_{i} \rvert}
+$$</p>
+</div>
+</div>
+<div class="section" id="length-distance-and-metric">
+<h3>Length, Distance and Metric<a class="headerlink" href="#length-distance-and-metric" title="Permalink to this headline">¶</a></h3>
+<p><strong>Geometric concepts</strong> of length and distance is defined below using the notion of norms and inner products</p>
+<div class="section" id="length-of-a-vector">
+<h4>Length of a vector<a class="headerlink" href="#length-of-a-vector" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="distance-between-two-vectors">
+<h4>Distance between two vectors<a class="headerlink" href="#distance-between-two-vectors" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="metric-of-a-vector-space">
+<h4>Metric of a vector space<a class="headerlink" href="#metric-of-a-vector-space" title="Permalink to this headline">¶</a></h4>
+</div>
+</div>
+<div class="section" id="angles">
+<h3>Angles<a class="headerlink" href="#angles" title="Permalink to this headline">¶</a></h3>
+<p>In addition, the concept of <strong>angle between vectors</strong> is defined using the notion of norms and inner products</p>
+<div class="section" id="orthogonality">
+<h4>Orthogonality<a class="headerlink" href="#orthogonality" title="Permalink to this headline">¶</a></h4>
+</div>
+</div>
+</div>
+<hr class="docutils" />
 <div class="section" id="bibliography">
 <h2>Bibliography<a class="headerlink" href="#bibliography" title="Permalink to this headline">¶</a></h2>
-<p id="id2"><dl class="citation">
-<dt class="label" id="id16"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<p id="id3"><dl class="citation">
+<dt class="label" id="id17"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
 <dd><p>Sheldon Axler. <em>Linear algebra done right</em>. Springer, 2014.</p>
 </dd>
 </dl>
@@ -496,8 +647,8 @@ $$</p>
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="../visualization/datastudio.html" title="previous page">Google Data Studio</a>
-    <a class='right-next' id="next-link" href="bayes.html" title="next page">Probability Theory</a>
+    <a class='left-prev' id="prev-link" href="stat.html" title="previous page">Statistics</a>
+    <a class='right-next' id="next-link" href="prob.html" title="next page">Probability Theory</a>
 
         </div>
         
