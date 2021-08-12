@@ -149,7 +149,94 @@ $$
 
 
 ## Inner Product Spaces
-In making the definition of a vector space, we generalized the linear structure (addition and scalar multiplication) of R2 and R3. We ignored other important features, such as the notions of length and angle. These ideas are embedded in the concept we now investigate, inner products
+
+This section adds the geometric notions of **lengths** and **angles** to the mathematical structure of vector spaces by defining an **inner product** on the vector space. Vector spaces with defined inner products are called **inner product spaces.**
+### Inner Product
+
+Definition of inner product as a function from a **tuple of vectors** $(u,v) \in V$ to a **scalar** $\langle u, v \rangle \in F$.
+
+```{admonition} Definition
+An inner product defined on $V$ is a function that takes each ordered pair of vectors $(u,v) \in V$ to a scalar $\langle u, v \rangle \in F$, with the following properties:
+
+1. positivity - the inner product of a vector with **itself** is either positive or zero
+$$\forall v \in V, \langle v, v \rangle \geq 0$$
+
+2. definiteness - the inner product of the zero vector is zero
+$$\langle v, v \rangle = 0 \iff v = 0$$
+
+3. additivity in first slot
+$$\langle u+v, w \rangle = \langle u, w \rangle + \langle v, w \rangle \text{ for all } u, v, w \in V$$
+
+4. homogeneity in first slot
+$$\langle \lambda u, v \rangle = \lambda \langle u, v \rangle \text{ for all } u, v \in V \text{ and } \lambda \in F$$
+
+5. conjugate symmetry
+$$\langle u, v \rangle = \overline{ \langle v, u  \rangle } \text{ for all } u, v \in V$$
+```
+
+```{admonition} Note
+:class: tip
+**Properties 1 and 2**  - can be considered together as **Positive definiteness** property
+
+**Properties 3 and 4**  - can be considered together as **Linearity in first slot** property
+
+For real vector spaces, **Property 5** simplifies to symmetry condition since every real number is equal to its complex conjugate: $\forall x \in \mathbb{R}, \overline{x} = x$
+```
+
+#### Example
+1. Euclidean inner product on $F^n$, where $F$ can be $\mathbb{R}$ or $\mathbb{C}$, defined to be:
+
+$$
+\langle (w_{1}, \ldots, w_{n}), (z_{1}, \ldots, z_{n}) \rangle =   w_{1} \overline{z_{1}} + \cdots + w_{n} \overline{z_{n}}
+$$
+
+In other words, the sum of element-wise conjugate multiplication. If $F^n$ is just the reals, then this is also known as the **dot product**.
+
+### Norm
+
+The concept of a **Norm** is the notion of **length** or **distance** for vectors. An **inner product induces** a norm on a vector space. However, **not every norm** is induced by an inner product, such as the $\ell_{1}$ norm.
+
+
+```{admonition} Definition
+For $v \in V$, the induced norm of v, denoted by $\lVert v \rVert$ is defined:
+
+$$
+\lVert v \rVert = \sqrt{\langle v, v \rangle}
+$$
+
+This norm is not the only norm that can be defined for a vector space -- this is just the **induced norm**
+```
+
+#### Induced by an inner product
+1. Euclidean norm or $\ell_{2}$ norm
+If $v \in F^{n}$ is defined with the Euclidean inner product:
+
+$$
+\lVert v \rVert = \sqrt{\sum_{i=1}^{n} {\lvert v_{i} \rvert}^{2}}
+$$
+
+#### Not induced by an inner product
+1. Manhattan norm or $\ell_{1}$ norm
+
+$$
+\lVert v \rVert = \sum_{i=1}^{n} {\lvert v_{i} \rvert}
+$$
+
+### Length, Distance and Metric
+
+**Geometric concepts** of length and distance is defined below using the notion of norms and inner products
+
+#### Length of a vector
+
+#### Distance between two vectors
+
+#### Metric of a vector space
+
+### Angles
+
+In addition, the concept of **angle between vectors** is defined using the notion of norms and inner products
+
+#### Orthogonality
 ---
 
 ## Bibliography

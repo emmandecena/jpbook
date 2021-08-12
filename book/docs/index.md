@@ -9,21 +9,21 @@ Here are some of the features of this site:
 :column: col-lg-6 px-2 py-2
 :card:
 
-**[Case studies on various datasets](#)** ✍
+**Case studies on various datasets** ✍
 ^^^
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
 ---
-**[Algorithms for optimization](#)** 🚀
+**Algorithms for optimization** 🚀
 ^^^
 Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 ---
-**[Statistical learning techniques](#)** ✨
+**Statistical learning techniques** ✨
 ^^^
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temp. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 ---
-**[Foundations on mathematics](#)** 💡
+**Foundations on mathematics** 💡
 ^^^
-Definitions and key theorems in [Linear Algebra](math/linalg), Probability Theory, Statistics, and Operations Research as the foundations for machine learning methods.
+Definitions and key theorems in [Linear Algebra](math/linalg), [Probability Theory](math/prob), [Computational Statistics](math/rstat), and [Operations Research](math/or) as the foundations for machine learning methods.
 ```
 
 The notebooks are organized into a three major groups according to their content:
@@ -63,26 +63,26 @@ Here are some featured notebooks.
 :column: col-lg-4 px-2 py-2
 ---
 :header: bg-jb-one
-**Time Series Analysis**
+**Time Series Forecasting**
 ^^^
-[**The Jupyter Book Gallery**](http://gallery.jupyterbook.org): A gallery of community books that have been created with Jupyter Book.
+[**Using classical AR, MA, ARIMA, and SARIMA models**](https://www.ecdecena.com/docs/index.html): Forecasting regional system demand for the Philippine electricity grid.
 
-[**The QuantEcon Python Lectures**](https://python.quantecon.org/intro.html): A full mathematical textbook built with a customer Jupyter Book theme.
+[**Using LSTM recurrent neural networks**](https://www.ecdecena.com/docs/index.html): Investigation on using artificial neural networks to model a high-variability series such as the nodal electricity price.
 
 ---
 :header: bg-jb-two
 
 **Regression Analysis**
 ^^^
-[**The Jupyter Book Gallery**](http://gallery.jupyterbook.org): A gallery of community books that have been created with Jupyter Book.
+[**Multiple and Multivariate Regression**](https://www.ecdecena.com/docs/index.html): Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 
-[**The QuantEcon Python Lectures**](https://python.quantecon.org/intro.html): A full mathematical textbook built with a customer Jupyter Book theme.
+[**ANOVA and MANOVA for categorical variables**](https://www.ecdecena.com/docs/index.html): Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 ---
 :header: bg-jb-three
 
 **Neural Networks**
 ^^^
-[**The Jupyter Book Gallery**](http://gallery.jupyterbook.org): A gallery of community books that have been created with Jupyter Book.
+[**Using Multilayer Perceptrons**](https://www.ecdecena.com/docs/index.html): Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 
-[**The QuantEcon Python Lectures**](https://python.quantecon.org/intro.html): A full mathematical textbook built with a customer Jupyter Book theme.
+[**Using CNNs**](https://www.ecdecena.com/docs/index.html): Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 ```

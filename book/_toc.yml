@@ -6,6 +6,7 @@ parts:
   - file: docs/electricitymarkets/clearingprice
   - file: docs/electricitymarkets/demand 
   - file: docs/electricitymarkets/mnm
+  - file: docs/visualization/tableau
   - file: docs/datasets/datasets
     sections:
     - file: docs/datasets/philenergy
@@ -14,16 +15,16 @@ parts:
 - caption: Optimization
   chapters:
   - file: docs/numpy
-  - file: docs/workflow
+  - file: docs/math/opti
 - caption: Statistics
   chapters:
-  - file: docs/visualization/tableau
-  - file: docs/visualization/datastudio
+  - file: docs/math/stat
 - caption: References
   chapters:
   - file: docs/math/linalg
-  - file: docs/math/bayes
-  - file: docs/math/lp
+  - file: docs/math/prob
+  - file: docs/math/rstat
+  - file: docs/math/or
 - caption: Contact me
   chapters:
   - file: docs/about/contact
