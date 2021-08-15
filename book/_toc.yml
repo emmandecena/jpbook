@@ -3,28 +3,41 @@ root: docs/index
 parts:
 - caption: Case Studies
   chapters: 
-  - file: docs/electricitymarkets/clearingprice
   - file: docs/electricitymarkets/demand 
+  - file: docs/electricitymarkets/clearingprice
   - file: docs/electricitymarkets/mnm
-  - file: docs/visualization/tableau
+  - file: docs/neuralnetworks/neuralnetworks
+    sections:
+    - file: docs/neuralnetworks/colab
+    - file: docs/neuralnetworks/local
+      sections:
+      - file: docs/neuralnetworks/local/annfromscratch
   - file: docs/datasets/datasets
     sections:
     - file: docs/datasets/philenergy
       sections:
-      - file: docs/datasets/philenergy/mps
+      - file: docs/datasets/philenergy/datamps
+      - file: docs/datasets/philenergy/dataclearingprice
+      - file: docs/datasets/philenergy/dataregionaldemand
 - caption: Optimization
   chapters:
-  - file: docs/numpy
-  - file: docs/math/opti
-- caption: Statistics
+  - file: docs/opti/lp
+  - file: docs/opti/dispatch
+- caption: Statistical Learning
   chapters:
-  - file: docs/math/stat
+  - file: docs/stat/rstat
 - caption: References
   chapters:
   - file: docs/math/linalg
   - file: docs/math/prob
-  - file: docs/math/rstat
+  - file: docs/math/stat
   - file: docs/math/or
+- caption: Utilities
+  chapters:
+  - file: docs/utility/functions
+  - file: docs/utility/plotting
+  - file: docs/utility/numpy
+  - file: docs/visualization/tableau
 - caption: Contact me
   chapters:
   - file: docs/about/contact

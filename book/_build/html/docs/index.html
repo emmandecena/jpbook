@@ -56,7 +56,7 @@
     <link rel="shortcut icon" href="../_static/favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Market clearning price" href="electricitymarkets/clearingprice.html" />
+    <link rel="next" title="Regional Electricity Demand" href="electricitymarkets/demand.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -93,13 +93,13 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="electricitymarkets/clearingprice.html">
-   Market clearning price
+  <a class="reference internal" href="electricitymarkets/demand.html">
+   Regional Electricity Demand
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="electricitymarkets/demand.html">
-   Demand
+  <a class="reference internal" href="electricitymarkets/clearingprice.html">
+   Market Clearing Price
   </a>
  </li>
  <li class="toctree-l1">
@@ -107,14 +107,9 @@
    Market Network Model
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="visualization/tableau.html">
-   Tableau Dashboards
-  </a>
- </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="datasets/datasets.html">
-   Datasets
+  <a class="reference internal" href="neuralnetworks/neuralnetworks.html">
+   Neural Networks
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
@@ -122,9 +117,14 @@
    </i>
   </label>
   <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="neuralnetworks/colab.html">
+     Using Colab
+    </a>
+   </li>
    <li class="toctree-l2 has-children">
-    <a class="reference internal" href="datasets/philenergy.html">
-     Philippine Electricity Market
+    <a class="reference internal" href="neuralnetworks/local.html">
+     Using Local Machine
     </a>
     <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
     <label for="toctree-checkbox-2">
@@ -133,8 +133,47 @@
     </label>
     <ul>
      <li class="toctree-l3">
-      <a class="reference internal" href="datasets/philenergy/mps.html">
-       Market Prices and Schedules
+      <a class="reference internal" href="neuralnetworks/local/annfromscratch.html">
+       Neural Network from Scratch
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="datasets/datasets.html">
+   Datasets
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="datasets/philenergy.html">
+     Philippine Electricity Market
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+    <label for="toctree-checkbox-4">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="datasets/philenergy/datamps.html">
+       Market Prices and Schedules Data
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="datasets/philenergy/dataclearingprice.html">
+       Market Clearing Price Data
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="datasets/philenergy/dataregionaldemand.html">
+       Regional Electricity Demand Data
       </a>
      </li>
     </ul>
@@ -149,25 +188,25 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="numpy.html">
-   Numpy exercise
+  <a class="reference internal" href="opti/lp.html">
+   Using Julia
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="math/opti.html">
-   Simple Optimization
+  <a class="reference internal" href="opti/dispatch.html">
+   Economic Dispatch
   </a>
  </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
-  Statistics
+  Statistical Learning
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="math/stat.html">
-   Statistics
+  <a class="reference internal" href="stat/rstat.html">
+   Computational Statistics
   </a>
  </li>
 </ul>
@@ -188,13 +227,40 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="math/rstat.html">
-   Computational Statistics
+  <a class="reference internal" href="math/stat.html">
+   Statistics
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="math/or.html">
    Operations Research
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Utilities
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="utility/functions.html">
+   Functions and Classes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="utility/plotting.html">
+   Plotting exercise
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="utility/numpy.html">
+   Numpy Exercise
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="visualization/tableau.html">
+   Tableau Dashboards
   </a>
  </li>
 </ul>
@@ -273,7 +339,7 @@
 <p class="card-text"><strong>Case studies on various datasets</strong> ✍</p>
 </div>
 <div class="card-body docutils">
-<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+<p class="card-text">Notebooks currently focused on energy and electricity markets such as: Exploratory Data Analysis on <a class="reference internal" href="datasets/philenergy.html"><span class="doc std std-doc">Energy Market datasets</span></a>, <a class="reference internal" href="electricitymarkets/mnm.html"><span class="doc std std-doc">Geocoding of Market Participants</span></a> using Google API , Forecasting of <a class="reference internal" href="electricitymarkets/demand.html"><span class="doc std std-doc">Regional Electricity Demand</span></a>, and Forecasting of <a class="reference internal" href="electricitymarkets/clearingprice.html"><span class="doc std std-doc">Market Clearing Prices</span></a>.</p>
 </div>
 </div>
 </div>
@@ -283,7 +349,7 @@
 <p class="card-text"><strong>Algorithms for optimization</strong> 🚀</p>
 </div>
 <div class="card-body docutils">
-<p class="card-text">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p class="card-text">Demonstrate various optimization methods using Python and Julia such as: Linear Programming, Heuristic Methods, Decision Analysis, and Dynamic Programming.</p>
 </div>
 </div>
 </div>
@@ -293,7 +359,7 @@
 <p class="card-text"><strong>Statistical learning techniques</strong> ✨</p>
 </div>
 <div class="card-body docutils">
-<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temp. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p class="card-text">Linear and Non-linear techniques such as Time Series Clustering, Dimension Reduction.</p>
 </div>
 </div>
 </div>
@@ -303,7 +369,7 @@
 <p class="card-text"><strong>Foundations on mathematics</strong> 💡</p>
 </div>
 <div class="card-body docutils">
-<p class="card-text">Definitions and key theorems in <a class="reference internal" href="math/linalg.html"><span class="doc std std-doc">Linear Algebra</span></a>, <a class="reference internal" href="math/prob.html"><span class="doc std std-doc">Probability Theory</span></a>, <a class="reference internal" href="math/rstat.html"><span class="doc std std-doc">Computational Statistics</span></a>, and <a class="reference internal" href="math/or.html"><span class="doc std std-doc">Operations Research</span></a> as the foundations for machine learning methods.</p>
+<p class="card-text">Definitions and key theorems in <a class="reference internal" href="math/linalg.html"><span class="doc std std-doc">Linear Algebra</span></a>, <a class="reference internal" href="math/prob.html"><span class="doc std std-doc">Probability Theory</span></a>, <span class="xref myst">Computational Statistics</span>, and <a class="reference internal" href="math/or.html"><span class="doc std std-doc">Operations Research</span></a> as the foundations for machine learning methods.</p>
 </div>
 </div>
 </div>
@@ -315,31 +381,6 @@
 <li><p><strong>Model Development</strong> cover specific machine learning algorithms in more depth to produce a working model.</p></li>
 <li><p><strong>Reference</strong> notebooks provide a review behind the theory and industry-specific knowledge.</p></li>
 </ul>
-<!--
-This website is built with Jupyter Book!
-Explore the chapters to the left to learn more!
-
-```{admonition} Learn more and get involved
-:class: tip full-width
-
-💡 [Open an issue](#)
-: We track enhancement requests, bug-reports, and to-do items via GitHub issues.
-
-💬 [Join the discussion](#)
-: We have community discussions, talk about ideas, and share general questions and feedback in our [community forum](#).
-
-👍 [Vote for new features](#)
-: The community provides feedback by adding a 👍 reaction to issues in our repositories.
-  You can find a list of the top issues [in the Executable Books issue leader board](#).
-
-🙌 [Join the community](#)
-: Jupyter Book is developed by the [Executable Books community](#).
-  We welcome anyone to join us in improving Jupyter Book and helping one another learn and create their books.
-  To join, check out our [contributing guide](#).
-```
-
-## Find the right documentation resources
--->
 <p>Here are some featured notebooks.</p>
 <div class="sphinx-bs container pb-4 full-width docutils">
 <div class="row docutils">
@@ -371,12 +412,14 @@ Explore the chapters to the left to learn more!
 <p class="card-text"><strong>Neural Networks</strong></p>
 </div>
 <div class="card-body docutils">
-<p class="card-text"><a class="reference external" href="https://www.ecdecena.com/docs/index.html"><strong>Using Multilayer Perceptrons</strong></a>: Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-<p class="card-text"><a class="reference external" href="https://www.ecdecena.com/docs/index.html"><strong>Using CNNs</strong></a>: Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+<p class="card-text"><a class="reference external" href="https://www.ecdecena.com/mlp_cnn.html"><strong>Using MLPs and CNNs</strong></a>: Image classifer model using Multilayer Perceptrons and Convolutional Neural Networks.</p>
+<p class="card-text"><a class="reference internal" href="neuralnetworks/local/annfromscratch.html"><span class="doc std std-doc"><strong>Neural Network using Numpy</strong></span></a>: Building a neural network from scratch using Python and Numpy only.</p>
 </div>
 </div>
 </div>
 </div>
+</div>
+<div class="toctree-wrapper compound">
 </div>
 <div class="toctree-wrapper compound">
 </div>
@@ -415,7 +458,7 @@ Explore the chapters to the left to learn more!
         
         <div class='prev-next-bottom'>
             
-    <a class='right-next' id="next-link" href="electricitymarkets/clearingprice.html" title="next page">Market clearning price</a>
+    <a class='right-next' id="next-link" href="electricitymarkets/demand.html" title="next page">Regional Electricity Demand</a>
 
         </div>
         

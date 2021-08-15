@@ -59,7 +59,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Probability Theory" href="prob.html" />
-    <link rel="prev" title="Statistics" href="stat.html" />
+    <link rel="prev" title="Computational Statistics" href="../stat/rstat.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -96,13 +96,13 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../electricitymarkets/clearingprice.html">
-   Market clearning price
+  <a class="reference internal" href="../electricitymarkets/demand.html">
+   Regional Electricity Demand
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../electricitymarkets/demand.html">
-   Demand
+  <a class="reference internal" href="../electricitymarkets/clearingprice.html">
+   Market Clearing Price
   </a>
  </li>
  <li class="toctree-l1">
@@ -110,14 +110,9 @@
    Market Network Model
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../visualization/tableau.html">
-   Tableau Dashboards
-  </a>
- </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../datasets/datasets.html">
-   Datasets
+  <a class="reference internal" href="../neuralnetworks/neuralnetworks.html">
+   Neural Networks
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
@@ -125,9 +120,14 @@
    </i>
   </label>
   <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuralnetworks/colab.html">
+     Using Colab
+    </a>
+   </li>
    <li class="toctree-l2 has-children">
-    <a class="reference internal" href="../datasets/philenergy.html">
-     Philippine Electricity Market
+    <a class="reference internal" href="../neuralnetworks/local.html">
+     Using Local Machine
     </a>
     <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
     <label for="toctree-checkbox-2">
@@ -136,8 +136,47 @@
     </label>
     <ul>
      <li class="toctree-l3">
-      <a class="reference internal" href="../datasets/philenergy/mps.html">
-       Market Prices and Schedules
+      <a class="reference internal" href="../neuralnetworks/local/annfromscratch.html">
+       Neural Network from Scratch
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../datasets/datasets.html">
+   Datasets
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../datasets/philenergy.html">
+     Philippine Electricity Market
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+    <label for="toctree-checkbox-4">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../datasets/philenergy/datamps.html">
+       Market Prices and Schedules Data
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../datasets/philenergy/dataclearingprice.html">
+       Market Clearing Price Data
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../datasets/philenergy/dataregionaldemand.html">
+       Regional Electricity Demand Data
       </a>
      </li>
     </ul>
@@ -152,25 +191,25 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../numpy.html">
-   Numpy exercise
+  <a class="reference internal" href="../opti/lp.html">
+   Using Julia
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="opti.html">
-   Simple Optimization
+  <a class="reference internal" href="../opti/dispatch.html">
+   Economic Dispatch
   </a>
  </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
-  Statistics
+  Statistical Learning
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="stat.html">
-   Statistics
+  <a class="reference internal" href="../stat/rstat.html">
+   Computational Statistics
   </a>
  </li>
 </ul>
@@ -191,13 +230,40 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="rstat.html">
-   Computational Statistics
+  <a class="reference internal" href="stat.html">
+   Statistics
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="or.html">
    Operations Research
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Utilities
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../utility/functions.html">
+   Functions and Classes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../utility/plotting.html">
+   Plotting exercise
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../utility/numpy.html">
+   Numpy Exercise
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../visualization/tableau.html">
+   Tableau Dashboards
   </a>
  </li>
 </ul>
@@ -474,7 +540,7 @@ $$</p></li>
 <p>$\text{Let } m, n &gt; 0 \in \mathbb{Z} \text{ and }A_{j,k} \in F \text{ for } j = 1, \ldots ,m \text{ and } k = 1,…,n.$</p>
 <p>$\text{A linear map } T \text{ from the set of all linear maps } \mathcal{L}(F^{n},F^{m}) \text{ has the general form: }$</p>
 <div class="math notranslate nohighlight" id="equation-linearmapgeneralform">
-<span class="eqno">(2)<a class="headerlink" href="#equation-linearmapgeneralform" title="Permalink to this equation">¶</a></span>\[T(x_{1},...,x_{n}) = (A_{1,1} x_{1}+ \cdots +A_{1,n} x_{n}, \ldots , A_{m,1} x_{1}+ \cdots +A_{m,n} x_{n})\]</div>
+<span class="eqno">(1)<a class="headerlink" href="#equation-linearmapgeneralform" title="Permalink to this equation">¶</a></span>\[T(x_{1},...,x_{n}) = (A_{1,1} x_{1}+ \cdots +A_{1,n} x_{n}, \ldots , A_{m,1} x_{1}+ \cdots +A_{m,n} x_{n})\]</div>
 <p><strong>Take note of the comma, centered dots and lowered dots</strong></p>
 </div>
 <div class="section" id="matrices">
@@ -494,7 +560,7 @@ $$</p></li>
 <p class="admonition-title">Definition</p>
 <p>Given a linear map $T \in \mathcal{L} \left( V, W \right)$ where $v_{1},\ldots,v_{n}$ is a basis of $V$ and $w_{1}, \ldots ,v_{m}$ is a basis of $W$, then the <strong>matrix of T</strong> consists of the scalars $A_{1,k}, \ldots  ,A_{m,k}$ needed to write the $k$th basis of $V$ as a linear combination of the basis vectors in $W$.</p>
 <div class="math notranslate nohighlight" id="equation-matrixoflinearmap">
-<span class="eqno">(3)<a class="headerlink" href="#equation-matrixoflinearmap" title="Permalink to this equation">¶</a></span>\[Tv_{k} = A_{1,k}w_{1} + \ldots + A_{m,k}w_{m}\]</div>
+<span class="eqno">(2)<a class="headerlink" href="#equation-matrixoflinearmap" title="Permalink to this equation">¶</a></span>\[Tv_{k} = A_{1,k}w_{1} + \ldots + A_{m,k}w_{m}\]</div>
 </div>
 <div class="section" id="example">
 <h4>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h4>
@@ -647,7 +713,7 @@ $$</p>
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="stat.html" title="previous page">Statistics</a>
+    <a class='left-prev' id="prev-link" href="../stat/rstat.html" title="previous page">Computational Statistics</a>
     <a class='right-next' id="next-link" href="prob.html" title="next page">Probability Theory</a>
 
         </div>

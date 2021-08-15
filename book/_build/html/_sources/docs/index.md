@@ -11,15 +11,15 @@ Here are some of the features of this site:
 
 **Case studies on various datasets** ✍
 ^^^
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+Notebooks currently focused on energy and electricity markets such as: Exploratory Data Analysis on [Energy Market datasets](datasets/philenergy), [Geocoding of Market Participants](electricitymarkets/mnm) using Google API , Forecasting of [Regional Electricity Demand](electricitymarkets/demand), and Forecasting of [Market Clearing Prices](electricitymarkets/clearingprice). 
 ---
 **Algorithms for optimization** 🚀
 ^^^
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Demonstrate various optimization methods using Python and Julia such as: Linear Programming, Heuristic Methods, Decision Analysis, and Dynamic Programming. 
 ---
 **Statistical learning techniques** ✨
 ^^^
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temp. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Linear and Non-linear techniques such as Time Series Clustering, Dimension Reduction.
 ---
 **Foundations on mathematics** 💡
 ^^^
@@ -31,31 +31,6 @@ The notebooks are organized into a three major groups according to their content
 - **Data Exploration** demonstrate step-by-step data cleaning, wrangling, and visualization procedures.
 - **Model Development** cover specific machine learning algorithms in more depth to produce a working model.
 - **Reference** notebooks provide a review behind the theory and industry-specific knowledge.
-<!--
-This website is built with Jupyter Book!
-Explore the chapters to the left to learn more!
-
-```{admonition} Learn more and get involved
-:class: tip full-width
-
-💡 [Open an issue](#)
-: We track enhancement requests, bug-reports, and to-do items via GitHub issues.
-
-💬 [Join the discussion](#)
-: We have community discussions, talk about ideas, and share general questions and feedback in our [community forum](#).
-
-👍 [Vote for new features](#)
-: The community provides feedback by adding a 👍 reaction to issues in our repositories.
-  You can find a list of the top issues [in the Executable Books issue leader board](#).
-
-🙌 [Join the community](#)
-: Jupyter Book is developed by the [Executable Books community](#).
-  We welcome anyone to join us in improving Jupyter Book and helping one another learn and create their books.
-  To join, check out our [contributing guide](#).
-```
-
-## Find the right documentation resources
--->
 
 Here are some featured notebooks.
 ```{panels}
@@ -82,7 +57,7 @@ Here are some featured notebooks.
 
 **Neural Networks**
 ^^^
-[**Using Multilayer Perceptrons**](https://www.ecdecena.com/docs/index.html): Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+[**Using MLPs and CNNs**](https://www.ecdecena.com/mlp_cnn.html): Image classifer model using Multilayer Perceptrons and Convolutional Neural Networks.
 
-[**Using CNNs**](https://www.ecdecena.com/docs/index.html): Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+[**Neural Network using Numpy**](neuralnetworks/local/annfromscratch): Building a neural network from scratch using Python and Numpy only.
 ```
