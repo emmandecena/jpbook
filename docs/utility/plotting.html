@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Market Network Model &#8212; Data Analytics &amp; Insights in Electricity Markets</title>
+    <title>Plotting exercise &#8212; Data Analytics &amp; Insights in Electricity Markets</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -56,8 +56,8 @@
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Neural Networks" href="../neuralnetworks/neuralnetworks.html" />
-    <link rel="prev" title="Market Clearing Price" href="clearingprice.html" />
+    <link rel="next" title="Numpy Exercise" href="numpy.html" />
+    <link rel="prev" title="Functions and Classes" href="functions.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -92,19 +92,19 @@
   Case Studies
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="demand.html">
+  <a class="reference internal" href="../electricitymarkets/demand.html">
    Regional Electricity Demand
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="clearingprice.html">
+  <a class="reference internal" href="../electricitymarkets/clearingprice.html">
    Market Clearing Price
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../electricitymarkets/mnm.html">
    Market Network Model
   </a>
  </li>
@@ -243,19 +243,19 @@
   Utilities
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../utility/functions.html">
+  <a class="reference internal" href="functions.html">
    Functions and Classes
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../utility/plotting.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Plotting exercise
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../utility/numpy.html">
+  <a class="reference internal" href="numpy.html">
    Numpy Exercise
   </a>
  </li>
@@ -328,8 +328,57 @@
         
               <div>
                 
-  <div class="section" id="market-network-model">
-<h1>Market Network Model<a class="headerlink" href="#market-network-model" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="plotting-exercise">
+<h1>Plotting exercise<a class="headerlink" href="#plotting-exercise" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mpl_toolkits</span> <span class="kn">import</span> <span class="n">mplot3d</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/plotting_3_0.png" src="../../_images/plotting_3_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+
+<span class="c1"># Data for a three-dimensional line</span>
+<span class="n">zline</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">xline</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">zline</span><span class="p">)</span>
+<span class="n">yline</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">zline</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot3D</span><span class="p">(</span><span class="n">xline</span><span class="p">,</span> <span class="n">yline</span><span class="p">,</span> <span class="n">zline</span><span class="p">,</span> <span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+
+<span class="c1"># Data for three-dimensional scattered points</span>
+<span class="n">zdata</span> <span class="o">=</span> <span class="mi">15</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">xdata</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">zdata</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.1</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">ydata</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">zdata</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.1</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter3D</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span> <span class="n">ydata</span><span class="p">,</span> <span class="n">zdata</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">zdata</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Greens&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/plotting_4_0.png" src="../../_images/plotting_4_0.png" />
+</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -341,24 +390,24 @@
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "env-jupyterbook"
         },
         kernelOptions: {
-            kernelName: "python3",
-            path: "./docs/electricitymarkets"
+            kernelName: "env-jupyterbook",
+            path: "./docs/utility"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'env-jupyterbook'</script>
 
               </div>
               
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="clearingprice.html" title="previous page">Market Clearing Price</a>
-    <a class='right-next' id="next-link" href="../neuralnetworks/neuralnetworks.html" title="next page">Neural Networks</a>
+    <a class='left-prev' id="prev-link" href="functions.html" title="previous page">Functions and Classes</a>
+    <a class='right-next' id="next-link" href="numpy.html" title="next page">Numpy Exercise</a>
 
         </div>
         

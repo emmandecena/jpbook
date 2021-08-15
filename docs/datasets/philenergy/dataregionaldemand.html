@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Market Prices and Schedules &#8212; Data Analytics &amp; Insights in Electricity Markets</title>
+    <title>Regional Electricity Demand Data &#8212; Data Analytics &amp; Insights in Electricity Markets</title>
     
   <link href="../../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -56,8 +56,8 @@
     <link rel="shortcut icon" href="../../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Numpy exercise" href="../../numpy.html" />
-    <link rel="prev" title="Philippine Electricity Market" href="../philenergy.html" />
+    <link rel="next" title="Using Julia" href="../../opti/lp.html" />
+    <link rel="prev" title="Market Clearing Price Data" href="dataclearingprice.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -94,13 +94,13 @@
 </p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../../electricitymarkets/clearingprice.html">
-   Market clearning price
+  <a class="reference internal" href="../../electricitymarkets/demand.html">
+   Regional Electricity Demand
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../electricitymarkets/demand.html">
-   Demand
+  <a class="reference internal" href="../../electricitymarkets/clearingprice.html">
+   Market Clearing Price
   </a>
  </li>
  <li class="toctree-l1">
@@ -108,17 +108,46 @@
    Market Network Model
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../visualization/tableau.html">
-   Tableau Dashboards
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../neuralnetworks/neuralnetworks.html">
+   Neural Networks
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../neuralnetworks/colab.html">
+     Using Colab
+    </a>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../neuralnetworks/local.html">
+     Using Local Machine
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../neuralnetworks/local/annfromscratch.html">
+       Neural Network from Scratch
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="../datasets.html">
    Datasets
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -127,15 +156,25 @@
     <a class="reference internal" href="../philenergy.html">
      Philippine Electricity Market
     </a>
-    <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-    <label for="toctree-checkbox-2">
+    <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+    <label for="toctree-checkbox-4">
      <i class="fas fa-chevron-down">
      </i>
     </label>
     <ul class="current">
+     <li class="toctree-l3">
+      <a class="reference internal" href="datamps.html">
+       Market Prices and Schedules Data
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="dataclearingprice.html">
+       Market Clearing Price Data
+      </a>
+     </li>
      <li class="toctree-l3 current active">
       <a class="current reference internal" href="#">
-       Market Prices and Schedules
+       Regional Electricity Demand Data
       </a>
      </li>
     </ul>
@@ -150,25 +189,25 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../../numpy.html">
-   Numpy exercise
+  <a class="reference internal" href="../../opti/lp.html">
+   Using Julia
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../math/opti.html">
-   Simple Optimization
+  <a class="reference internal" href="../../opti/dispatch.html">
+   Economic Dispatch
   </a>
  </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
-  Statistics
+  Statistical Learning
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../../math/stat.html">
-   Statistics
+  <a class="reference internal" href="../../stat/rstat.html">
+   Computational Statistics
   </a>
  </li>
 </ul>
@@ -189,13 +228,40 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../math/rstat.html">
-   Computational Statistics
+  <a class="reference internal" href="../../math/stat.html">
+   Statistics
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../../math/or.html">
    Operations Research
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Utilities
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../utility/functions.html">
+   Functions and Classes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../utility/plotting.html">
+   Plotting exercise
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../utility/numpy.html">
+   Numpy Exercise
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../visualization/tableau.html">
+   Tableau Dashboards
   </a>
  </li>
 </ul>
@@ -262,8 +328,8 @@
         
               <div>
                 
-  <div class="section" id="market-prices-and-schedules">
-<h1>Market Prices and Schedules<a class="headerlink" href="#market-prices-and-schedules" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="regional-electricity-demand-data">
+<h1>Regional Electricity Demand Data<a class="headerlink" href="#regional-electricity-demand-data" title="Permalink to this headline">¶</a></h1>
 </div>
 
     <script type="text/x-thebe-config">
@@ -291,8 +357,8 @@
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="../philenergy.html" title="previous page">Philippine Electricity Market</a>
-    <a class='right-next' id="next-link" href="../../numpy.html" title="next page">Numpy exercise</a>
+    <a class='left-prev' id="prev-link" href="dataclearingprice.html" title="previous page">Market Clearing Price Data</a>
+    <a class='right-next' id="next-link" href="../../opti/lp.html" title="next page">Using Julia</a>
 
         </div>
         

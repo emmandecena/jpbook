@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Simple Optimization &#8212; Data Analytics &amp; Insights in Electricity Markets</title>
+    <title>Neural Networks &#8212; Data Analytics &amp; Insights in Electricity Markets</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -56,8 +56,8 @@
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Statistics" href="stat.html" />
-    <link rel="prev" title="Numpy exercise" href="../numpy.html" />
+    <link rel="next" title="Using Colab" href="colab.html" />
+    <link rel="prev" title="Market Network Model" href="../electricitymarkets/mnm.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -92,15 +92,15 @@
   Case Studies
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../electricitymarkets/clearingprice.html">
-   Market clearning price
+  <a class="reference internal" href="../electricitymarkets/demand.html">
+   Regional Electricity Demand
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../electricitymarkets/demand.html">
-   Demand
+  <a class="reference internal" href="../electricitymarkets/clearingprice.html">
+   Market Clearing Price
   </a>
  </li>
  <li class="toctree-l1">
@@ -108,24 +108,24 @@
    Market Network Model
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../visualization/tableau.html">
-   Tableau Dashboards
+ <li class="toctree-l1 current active has-children">
+  <a class="current reference internal" href="#">
+   Neural Networks
   </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../datasets/datasets.html">
-   Datasets
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="colab.html">
+     Using Colab
+    </a>
+   </li>
    <li class="toctree-l2 has-children">
-    <a class="reference internal" href="../datasets/philenergy.html">
-     Philippine Electricity Market
+    <a class="reference internal" href="local.html">
+     Using Local Machine
     </a>
     <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
     <label for="toctree-checkbox-2">
@@ -134,8 +134,47 @@
     </label>
     <ul>
      <li class="toctree-l3">
-      <a class="reference internal" href="../datasets/philenergy/mps.html">
-       Market Prices and Schedules
+      <a class="reference internal" href="local/annfromscratch.html">
+       Neural Network from Scratch
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../datasets/datasets.html">
+   Datasets
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../datasets/philenergy.html">
+     Philippine Electricity Market
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+    <label for="toctree-checkbox-4">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../datasets/philenergy/datamps.html">
+       Market Prices and Schedules Data
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../datasets/philenergy/dataclearingprice.html">
+       Market Clearing Price Data
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../datasets/philenergy/dataregionaldemand.html">
+       Regional Electricity Demand Data
       </a>
      </li>
     </ul>
@@ -148,27 +187,27 @@
   Optimization
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../numpy.html">
-   Numpy exercise
+  <a class="reference internal" href="../opti/lp.html">
+   Using Julia
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Simple Optimization
+ <li class="toctree-l1">
+  <a class="reference internal" href="../opti/dispatch.html">
+   Economic Dispatch
   </a>
  </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
-  Statistics
+  Statistical Learning
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="stat.html">
-   Statistics
+  <a class="reference internal" href="../stat/rstat.html">
+   Computational Statistics
   </a>
  </li>
 </ul>
@@ -179,23 +218,50 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="linalg.html">
+  <a class="reference internal" href="../math/linalg.html">
    Linear Algebra
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="prob.html">
+  <a class="reference internal" href="../math/prob.html">
    Probability Theory
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="rstat.html">
-   Computational Statistics
+  <a class="reference internal" href="../math/stat.html">
+   Statistics
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="or.html">
+  <a class="reference internal" href="../math/or.html">
    Operations Research
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Utilities
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../utility/functions.html">
+   Functions and Classes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../utility/plotting.html">
+   Plotting exercise
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../utility/numpy.html">
+   Numpy Exercise
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../visualization/tableau.html">
+   Tableau Dashboards
   </a>
  </li>
 </ul>
@@ -262,49 +328,16 @@
         
               <div>
                 
-  <div class="section" id="simple-optimization">
-<h1>Simple Optimization<a class="headerlink" href="#simple-optimization" title="Permalink to this headline">¶</a></h1>
-<p><span class="sphinx-bs badge badge-danger">julia</span> <span class="sphinx-bs badge badge-secondary">optimization</span> <span class="sphinx-bs badge badge-warning">linear programming</span></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="n">JuMP</span><span class="p">,</span> <span class="n">Clp</span>
-
-
-<span class="n">m</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="n">Clp</span><span class="o">.</span><span class="n">Optimizer</span><span class="p">)</span>
-
-<span class="nd">@variable</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="mi">0</span><span class="o">&lt;=</span> <span class="n">x</span> <span class="o">&lt;=</span><span class="mi">40</span><span class="p">)</span>
-<span class="nd">@variable</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">y</span> <span class="o">&lt;=</span><span class="mi">0</span><span class="p">)</span>
-<span class="nd">@variable</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">z</span> <span class="o">&lt;=</span><span class="mi">0</span><span class="p">)</span>
-<span class="nd">@objective</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">Max</span><span class="p">,</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">+</span> <span class="n">z</span><span class="p">)</span>
-
-<span class="nd">@constraint</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">const1</span><span class="p">,</span> <span class="o">-</span><span class="n">x</span> <span class="o">+</span>  <span class="n">y</span> <span class="o">+</span> <span class="n">z</span> <span class="o">&lt;=</span> <span class="mi">20</span><span class="p">)</span>
-<span class="nd">@constraint</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">const2</span><span class="p">,</span>  <span class="n">x</span> <span class="o">+</span> <span class="mi">3</span><span class="n">y</span> <span class="o">+</span> <span class="n">z</span> <span class="o">&lt;=</span> <span class="mi">30</span><span class="p">)</span>
-
-<span class="n">optimize!</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
-<span class="n">println</span><span class="p">(</span><span class="s">&quot;Optimal Solutions:&quot;</span><span class="p">)</span>
-<span class="n">println</span><span class="p">(</span><span class="s">&quot;x = &quot;</span><span class="p">,</span> <span class="n">getvalue</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-<span class="n">println</span><span class="p">(</span><span class="s">&quot;y = &quot;</span><span class="p">,</span> <span class="n">getvalue</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
-<span class="n">println</span><span class="p">(</span><span class="s">&quot;z = &quot;</span><span class="p">,</span> <span class="n">getvalue</span><span class="p">(</span><span class="n">z</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimal Solutions:
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x = 40.0
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>y = -3.3333333333333335
-z = 0.0
-Coin0506I Presolve 0 (-2) rows, 0 (-3) columns and 0 (-6) elements
-Clp3002W Empty problem - 0 rows, 0 columns and 0 elements
-Clp0000I Optimal - objective value 36.666667
-Coin0511I After Postsolve, objective 36.666667, infeasibilities - dual 0 (0), primal 0 (0)
-Clp0032I Optimal objective 36.66666667 - 0 iterations time 0.002, Presolve 0.00
-</pre></div>
-</div>
-</div>
+  <div class="section" id="neural-networks">
+<h1>Neural Networks<a class="headerlink" href="#neural-networks" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="colab.html">Using Colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="local.html">Using Local Machine</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="local/annfromscratch.html">Neural Network from Scratch</a></li>
+</ul>
+</li>
+</ul>
 </div>
 </div>
 
@@ -317,24 +350,24 @@ Clp0032I Optimal objective 36.66666667 - 0 iterations time 0.002, Presolve 0.00
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "julia-1.5"
+            mode: "python"
         },
         kernelOptions: {
-            kernelName: "julia-1.5",
-            path: "./docs/math"
+            kernelName: "python3",
+            path: "./docs/neuralnetworks"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'julia-1.5'</script>
+    <script>kernelName = 'python3'</script>
 
               </div>
               
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="../numpy.html" title="previous page">Numpy exercise</a>
-    <a class='right-next' id="next-link" href="stat.html" title="next page">Statistics</a>
+    <a class='left-prev' id="prev-link" href="../electricitymarkets/mnm.html" title="previous page">Market Network Model</a>
+    <a class='right-next' id="next-link" href="colab.html" title="next page">Using Colab</a>
 
         </div>
         

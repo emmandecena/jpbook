@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Market Network Model &#8212; Data Analytics &amp; Insights in Electricity Markets</title>
+    <title>Functions and Classes &#8212; Data Analytics &amp; Insights in Electricity Markets</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -56,8 +56,8 @@
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Neural Networks" href="../neuralnetworks/neuralnetworks.html" />
-    <link rel="prev" title="Market Clearing Price" href="clearingprice.html" />
+    <link rel="next" title="Plotting exercise" href="plotting.html" />
+    <link rel="prev" title="Operations Research" href="../math/or.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -92,19 +92,19 @@
   Case Studies
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="demand.html">
+  <a class="reference internal" href="../electricitymarkets/demand.html">
    Regional Electricity Demand
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="clearingprice.html">
+  <a class="reference internal" href="../electricitymarkets/clearingprice.html">
    Market Clearing Price
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../electricitymarkets/mnm.html">
    Market Network Model
   </a>
  </li>
@@ -243,19 +243,19 @@
   Utilities
  </span>
 </p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../utility/functions.html">
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Functions and Classes
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../utility/plotting.html">
+  <a class="reference internal" href="plotting.html">
    Plotting exercise
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../utility/numpy.html">
+  <a class="reference internal" href="numpy.html">
    Numpy Exercise
   </a>
  </li>
@@ -328,8 +328,45 @@
         
               <div>
                 
-  <div class="section" id="market-network-model">
-<h1>Market Network Model<a class="headerlink" href="#market-network-model" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="functions-and-classes">
+<h1>Functions and Classes<a class="headerlink" href="#functions-and-classes" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">glob</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="k">def</span> <span class="nf">concatenate_csv_local</span><span class="p">(</span><span class="n">file_dir</span><span class="p">,</span> <span class="n">dest_dir</span><span class="p">,</span> <span class="n">output_filename</span><span class="o">=</span><span class="s2">&quot;output&quot;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Conatenates multiple hourly csv into one daily file. </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">files</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">file_dir</span><span class="p">,</span> <span class="s2">&quot;MP_*.csv&quot;</span><span class="p">))</span> 
+        
+        <span class="n">date_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;RUN_TIME&#39;</span><span class="p">]</span>
+            
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">((</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">header</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">error_bad_lines</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">skipfooter</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s1">&#39;python&#39;</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="n">date_columns</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span><span class="p">))</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;unnamed&#39;</span><span class="p">,</span><span class="n">case</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)],</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dest_dir</span><span class="p">,</span> <span class="s2">&quot;Combined-</span><span class="si">{}</span><span class="s2">.csv&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">output_filename</span><span class="p">)),</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Concatenate sucess: RTD-</span><span class="si">{}</span><span class="s2">.csv&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">output_filename</span><span class="p">))</span>
+        
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;File not found: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">output_filename</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">printer</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Conatenates multiple hourly csv into one daily file. </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Success&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -345,7 +382,7 @@
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./docs/electricitymarkets"
+            path: "./docs/utility"
         },
         predefinedOutput: true
     }
@@ -357,8 +394,8 @@
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="clearingprice.html" title="previous page">Market Clearing Price</a>
-    <a class='right-next' id="next-link" href="../neuralnetworks/neuralnetworks.html" title="next page">Neural Networks</a>
+    <a class='left-prev' id="prev-link" href="../math/or.html" title="previous page">Operations Research</a>
+    <a class='right-next' id="next-link" href="plotting.html" title="next page">Plotting exercise</a>
 
         </div>
         

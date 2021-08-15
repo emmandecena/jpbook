@@ -56,8 +56,8 @@
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Datasets" href="../datasets/datasets.html" />
-    <link rel="prev" title="Market Network Model" href="../electricitymarkets/mnm.html" />
+    <link rel="next" title="Info" href="../about/contact.html" />
+    <link rel="prev" title="Numpy Exercise" href="../utility/numpy.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -92,15 +92,15 @@
   Case Studies
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../electricitymarkets/clearingprice.html">
-   Market clearning price
+  <a class="reference internal" href="../electricitymarkets/demand.html">
+   Regional Electricity Demand
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../electricitymarkets/demand.html">
-   Demand
+  <a class="reference internal" href="../electricitymarkets/clearingprice.html">
+   Market Clearing Price
   </a>
  </li>
  <li class="toctree-l1">
@@ -108,14 +108,9 @@
    Market Network Model
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Tableau Dashboards
-  </a>
- </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../datasets/datasets.html">
-   Datasets
+  <a class="reference internal" href="../neuralnetworks/neuralnetworks.html">
+   Neural Networks
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
@@ -123,9 +118,14 @@
    </i>
   </label>
   <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuralnetworks/colab.html">
+     Using Colab
+    </a>
+   </li>
    <li class="toctree-l2 has-children">
-    <a class="reference internal" href="../datasets/philenergy.html">
-     Philippine Electricity Market
+    <a class="reference internal" href="../neuralnetworks/local.html">
+     Using Local Machine
     </a>
     <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
     <label for="toctree-checkbox-2">
@@ -134,8 +134,47 @@
     </label>
     <ul>
      <li class="toctree-l3">
-      <a class="reference internal" href="../datasets/philenergy/mps.html">
-       Market Prices and Schedules
+      <a class="reference internal" href="../neuralnetworks/local/annfromscratch.html">
+       Neural Network from Scratch
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../datasets/datasets.html">
+   Datasets
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../datasets/philenergy.html">
+     Philippine Electricity Market
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+    <label for="toctree-checkbox-4">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../datasets/philenergy/datamps.html">
+       Market Prices and Schedules Data
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../datasets/philenergy/dataclearingprice.html">
+       Market Clearing Price Data
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../datasets/philenergy/dataregionaldemand.html">
+       Regional Electricity Demand Data
       </a>
      </li>
     </ul>
@@ -150,25 +189,25 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../numpy.html">
-   Numpy exercise
+  <a class="reference internal" href="../opti/lp.html">
+   Using Julia
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../math/opti.html">
-   Simple Optimization
+  <a class="reference internal" href="../opti/dispatch.html">
+   Economic Dispatch
   </a>
  </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
-  Statistics
+  Statistical Learning
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../math/stat.html">
-   Statistics
+  <a class="reference internal" href="../stat/rstat.html">
+   Computational Statistics
   </a>
  </li>
 </ul>
@@ -189,13 +228,40 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../math/rstat.html">
-   Computational Statistics
+  <a class="reference internal" href="../math/stat.html">
+   Statistics
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../math/or.html">
    Operations Research
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Utilities
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../utility/functions.html">
+   Functions and Classes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../utility/plotting.html">
+   Plotting exercise
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../utility/numpy.html">
+   Numpy Exercise
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Tableau Dashboards
   </a>
  </li>
 </ul>
@@ -265,9 +331,6 @@
   <div class="section" id="tableau-dashboards">
 <h1>Tableau Dashboards<a class="headerlink" href="#tableau-dashboards" title="Permalink to this headline">¶</a></h1>
 <div class="full-width docutils">
-<iframe seamless frameborder="0" src="https://public.tableau.com/views/EnergyMarketParticipants/Sheet2?:embed=yes&:display_count=yes&:showVizHome=no" width = '950' height = '550' scrolling='yes' ></iframe>  
-</div>
-<div class="full-width docutils">
 <iframe seamless frameborder="0" src="https://public.tableau.com/views/EnergyMarketParticipants/Sheet2?:language=en&:display_count=y&publish=yes&:origin=viz_share_link" width = '950' height = '550' scrolling='yes' ></iframe>  
 </div>
 </div>
@@ -297,8 +360,8 @@
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="../electricitymarkets/mnm.html" title="previous page">Market Network Model</a>
-    <a class='right-next' id="next-link" href="../datasets/datasets.html" title="next page">Datasets</a>
+    <a class='left-prev' id="prev-link" href="../utility/numpy.html" title="previous page">Numpy Exercise</a>
+    <a class='right-next' id="next-link" href="../about/contact.html" title="next page">Info</a>
 
         </div>
         

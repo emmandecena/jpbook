@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Market Network Model &#8212; Data Analytics &amp; Insights in Electricity Markets</title>
+    <title>Using Julia &#8212; Data Analytics &amp; Insights in Electricity Markets</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -56,8 +56,8 @@
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Neural Networks" href="../neuralnetworks/neuralnetworks.html" />
-    <link rel="prev" title="Market Clearing Price" href="clearingprice.html" />
+    <link rel="next" title="Economic Dispatch" href="dispatch.html" />
+    <link rel="prev" title="Regional Electricity Demand Data" href="../datasets/philenergy/dataregionaldemand.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -92,19 +92,19 @@
   Case Studies
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="demand.html">
+  <a class="reference internal" href="../electricitymarkets/demand.html">
    Regional Electricity Demand
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="clearingprice.html">
+  <a class="reference internal" href="../electricitymarkets/clearingprice.html">
    Market Clearing Price
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../electricitymarkets/mnm.html">
    Market Network Model
   </a>
  </li>
@@ -187,14 +187,14 @@
   Optimization
  </span>
 </p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../opti/lp.html">
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Using Julia
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../opti/dispatch.html">
+  <a class="reference internal" href="dispatch.html">
    Economic Dispatch
   </a>
  </li>
@@ -328,8 +328,48 @@
         
               <div>
                 
-  <div class="section" id="market-network-model">
-<h1>Market Network Model<a class="headerlink" href="#market-network-model" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="using-julia">
+<h1>Using Julia<a class="headerlink" href="#using-julia" title="Permalink to this headline">¶</a></h1>
+<p><span class="sphinx-bs badge badge-danger">julia</span> <span class="sphinx-bs badge badge-secondary">optimization</span> <span class="sphinx-bs badge badge-warning">linear programming</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="n">JuMP</span><span class="p">,</span> <span class="n">Clp</span>
+
+
+<span class="n">m</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="n">Clp</span><span class="o">.</span><span class="n">Optimizer</span><span class="p">)</span>
+
+<span class="nd">@variable</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="mi">0</span><span class="o">&lt;=</span> <span class="n">x</span> <span class="o">&lt;=</span><span class="mi">40</span><span class="p">)</span>
+<span class="nd">@variable</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">y</span> <span class="o">&lt;=</span><span class="mi">0</span><span class="p">)</span>
+<span class="nd">@variable</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">z</span> <span class="o">&lt;=</span><span class="mi">0</span><span class="p">)</span>
+<span class="nd">@objective</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">Max</span><span class="p">,</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">+</span> <span class="n">z</span><span class="p">)</span>
+
+<span class="nd">@constraint</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">const1</span><span class="p">,</span> <span class="o">-</span><span class="n">x</span> <span class="o">+</span>  <span class="n">y</span> <span class="o">+</span> <span class="n">z</span> <span class="o">&lt;=</span> <span class="mi">20</span><span class="p">)</span>
+<span class="nd">@constraint</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">const2</span><span class="p">,</span>  <span class="n">x</span> <span class="o">+</span> <span class="mi">3</span><span class="n">y</span> <span class="o">+</span> <span class="n">z</span> <span class="o">&lt;=</span> <span class="mi">30</span><span class="p">)</span>
+
+<span class="n">optimize!</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;Optimal Solutions:&quot;</span><span class="p">)</span>
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;x = &quot;</span><span class="p">,</span> <span class="n">getvalue</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;y = &quot;</span><span class="p">,</span> <span class="n">getvalue</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;z = &quot;</span><span class="p">,</span> <span class="n">getvalue</span><span class="p">(</span><span class="n">z</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimal Solutions:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x = 40.0
+y = -3.3333333333333335
+z = 0.0
+Coin0506I Presolve 0 (-2) rows, 0 (-3) columns and 0 (-6) elements
+Clp3002W Empty problem - 0 rows, 0 columns and 0 elements
+Clp0000I Optimal - objective value 36.666667
+Coin0511I After Postsolve, objective 36.666667, infeasibilities - dual 0 (0), primal 0 (0)
+Clp0032I Optimal objective 36.66666667 - 0 iterations time 0.002, Presolve 0.00
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -341,24 +381,24 @@
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "julia-1.5"
         },
         kernelOptions: {
-            kernelName: "python3",
-            path: "./docs/electricitymarkets"
+            kernelName: "julia-1.5",
+            path: "./docs/opti"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'julia-1.5'</script>
 
               </div>
               
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="clearingprice.html" title="previous page">Market Clearing Price</a>
-    <a class='right-next' id="next-link" href="../neuralnetworks/neuralnetworks.html" title="next page">Neural Networks</a>
+    <a class='left-prev' id="prev-link" href="../datasets/philenergy/dataregionaldemand.html" title="previous page">Regional Electricity Demand Data</a>
+    <a class='right-next' id="next-link" href="dispatch.html" title="next page">Economic Dispatch</a>
 
         </div>
         
