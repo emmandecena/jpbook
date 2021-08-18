@@ -19,7 +19,7 @@ Demonstrate various optimization methods using Python and Julia such as: Linear 
 ---
 **Statistical learning techniques** ✨
 ^^^
-Linear and Non-linear techniques such as Time Series Clustering, Dimension Reduction.
+Supervised and Unsupervised techniques such as Time Series Clustering, Dimension reduction using SVM.
 ---
 **Foundations on mathematics** 💡
 ^^^
