@@ -152,21 +152,14 @@ df_price_7d = df_price.rolling('7D').mean()
 
 
 import matplotlib.pyplot as plt
-from matplotlib.pyplot import figure
 
 start, end = '2021-06-26', '2021-07-14'
-#df_price.loc[start:end]
-#figure(figsize=(25, 15), dpi=80)
 
 fig, ax = plt.subplots(figsize=(25,15))
 
-
 ax.plot(df_price_hr.loc[start:end, 'MARGINAL_PRICE'], marker='.', linestyle='-', linewidth=0.5, label='5-Min')
-
 ax.plot(df_price_day.loc[start:end, 'MARGINAL_PRICE'], marker='o', markersize=5, linestyle='-', label = 'Daily mean price')
-
 ax.plot(df_price_7d.loc[start:end, 'MARGINAL_PRICE'], marker='.', linestyle='-', label='7d Rolling Average price')
-
 ax.set_ylabel('Marginal Price')
 
 ax.legend()
