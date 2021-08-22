@@ -1,8 +1,9 @@
 # Info
 
-Hello! I'm Emmanuel, a Philippine-based **R/Python developer** and **Data scientist** specializing in energy markets and related industries. 
+Hello! I'm Emmanuel, a Philippine-based **R/Python developer** and **Data analyst** specializing in energy markets and related industries. 
 
-<!-- I provide end-to-end solutions for data analytics teams - from finding opportunities for product and process optimization, to the deployment of data-driven applications to help users **make better decisions**.
+<!-- 
+I provide end-to-end solutions for data analytics teams - from finding opportunities for product and process optimization, to the deployment of data-driven applications to help users **make better decisions**.
 -->
 ## Background and experience
 
@@ -15,7 +16,9 @@ My technical background comes from over six (6) years of experience and advanced
 :align: center
 ```
 
+<!-- 
 ### Let's talk
 Whether your project is big or small, I’d love to discuss how I can help your organization solve your data challenges. I am currently seeking remote **R/Python development** or **Data scientist** roles.
 
 Contact me at **+63-956-924-5530** *(WhatsApp, Viber or iMessage)* or send an email to **<a href="mailto:ecdecena@gmail.com?subject=Data Scientist - Energy Markets">ecdecena [at] gmail.com</a>**. Please note my timezone (GMT+8) as I may not be able to reply immediately. I look forward to hearing from you.  
+-->
