@@ -59,20 +59,6 @@ df_retail = get_data('http://www.iemop.ph/the-market/participants/rcoa-tp/')
 df_retail = df_retail.dropna()
 
 
-# In[334]:
-
-
-# load a simple dataset as a pandas DataFrame
-from vega_datasets import data
-cars = data.cars()
-
-alt.Chart(cars).mark_point().encode(
-    x='Horsepower',
-    y='Miles_per_Gallon',
-    color='Origin',
-)
-
-
 # In[335]:
 
 

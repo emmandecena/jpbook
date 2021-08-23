@@ -5,7 +5,6 @@ library(ggforce)
 library(rpart)
 library(lubridate)
 
-
 filename = "/Volumes/data/projects/django-mms/data/demand_daily/luzon-hourly-demand.csv"
 
 dt = fread(filename,sep=",")
