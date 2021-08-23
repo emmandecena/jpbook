@@ -5,7 +5,7 @@ parts:
   chapters: 
   - file: docs/electricitymarkets/demand 
   - file: docs/electricitymarkets/clearingprice
-  - file: docs/electricitymarkets/mnm
+  - file: docs/electricitymarkets/energymarket
   - file: docs/neuralnetworks/neuralnetworks
     sections:
     - file: docs/neuralnetworks/colab

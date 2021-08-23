@@ -11,7 +11,7 @@ Here are some of the features of this site:
 
 **Case studies on various datasets** ✍
 ^^^
-Notebooks currently focused on energy and electricity markets such as: Exploratory Data Analysis on [Energy Market datasets](datasets/philenergy), [Geocoding of Market Participants](electricitymarkets/mnm) using Google API , Forecasting of [Regional Electricity Demand](electricitymarkets/demand), and Forecasting of [Market Clearing Prices](electricitymarkets/clearingprice). 
+Notebooks currently focused on energy and electricity markets such as: [Exploratory Data Analysis on Energy Market datasets](datasets/philenergy), [Geocoding of Market Participants using Google API](electricitymarkets/energymarket) , [Forecasting of Regional Electricity Demand](electricitymarkets/demand), and [Forecasting of Market Clearing Prices](electricitymarkets/clearingprice). 
 ---
 **Algorithms for optimization** 🚀
 ^^^

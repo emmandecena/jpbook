@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Regional Electricity Demand &#8212; Data Analytics &amp; Insights in Electricity Markets</title>
+    <title>Forecasting Regional Electricity Demand &#8212; Data Analytics &amp; Insights in Electricity Markets</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -95,7 +95,7 @@
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Regional Electricity Demand
+   Forecasting Regional Electricity Demand
   </a>
  </li>
  <li class="toctree-l1">
@@ -104,8 +104,8 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="mnm.html">
-   Market Network Model
+  <a class="reference internal" href="energymarket.html">
+   Geocoding of Market Participants
   </a>
  </li>
  <li class="toctree-l1 has-children">
@@ -346,6 +346,38 @@
   <a class="reference internal nav-link" href="#decomposition-using-stl">
    Decomposition using STL
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exponential-models">
+     Exponential Models
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#arima">
+     Arima
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#constructing-features-to-model">
+   Constructing features to model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#rpart">
+   RPART
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#improvment">
+   Improvment
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#add-trend-forecast">
+   Add trend forecast
+  </a>
  </li>
 </ul>
 
@@ -358,8 +390,8 @@
         
               <div>
                 
-  <div class="section" id="regional-electricity-demand">
-<h1>Regional Electricity Demand<a class="headerlink" href="#regional-electricity-demand" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="forecasting-regional-electricity-demand">
+<h1>Forecasting Regional Electricity Demand<a class="headerlink" href="#forecasting-regional-electricity-demand" title="Permalink to this headline">¶</a></h1>
 <p><span class="sphinx-bs badge badge-primary">R</span> <span class="sphinx-bs badge badge-secondary">forecasting</span> <span class="sphinx-bs badge badge-warning">energy market</span></p>
 <p>This post explores time series forecasting models for the 5-min regional electricity demand data from the Electricity Market of the Philippines.</p>
 <div class="section" id="setup">
@@ -371,17 +403,9 @@
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">data.table</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">forecast</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message:
-“replacing previous import ‘vctrs::data_frame’ by ‘tibble::data_frame’ when loading ‘dplyr’”
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Registered S3 method overwritten by &#39;quantmod&#39;:
-  method            from
-  as.zoo.data.frame zoo 
+<span class="nf">library</span><span class="p">(</span><span class="n">ggforce</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">rpart</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">lubridate</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -469,7 +493,7 @@
 <h2>Decomposition using STL<a class="headerlink" href="#decomposition-using-stl" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="nf">ts</span><span class="p">(</span><span class="n">dt_train</span><span class="o">$</span><span class="n">MKT_REQT</span><span class="p">,</span> <span class="n">freq</span> <span class="o">=</span> <span class="m">24</span><span class="o">*</span><span class="m">365</span><span class="p">))</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="nf">ts</span><span class="p">(</span><span class="n">dt_train</span><span class="o">$</span><span class="n">MKT_REQT</span><span class="p">,</span> <span class="n">freq</span> <span class="o">=</span> <span class="m">24</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -495,6 +519,604 @@
 </div>
 <div class="cell_output docutils container">
 <img alt="../../_images/demand_15_0.png" src="../../_images/demand_15_0.png" />
+</div>
+</div>
+<div class="section" id="exponential-models">
+<h3>Exponential Models<a class="headerlink" href="#exponential-models" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">fit</span> <span class="o">=</span> <span class="nf">HoltWinters</span><span class="p">(</span><span class="n">data_ts</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">accuracy</span><span class="p">(</span><span class="n">fit</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="n">Error</span> <span class="ow">in</span> <span class="n">accuracy</span><span class="o">.</span><span class="n">default</span><span class="p">(</span><span class="n">fit</span><span class="p">):</span> <span class="n">First</span> <span class="n">argument</span> <span class="n">should</span> <span class="n">be</span> <span class="n">a</span> <span class="n">forecast</span> <span class="nb">object</span> <span class="ow">or</span> <span class="n">a</span> <span class="n">time</span> <span class="n">series</span><span class="o">.</span>
+<span class="ne">Traceback</span>:
+
+<span class="mi">1</span><span class="o">.</span> <span class="n">accuracy</span><span class="p">(</span><span class="n">fit</span><span class="p">)</span>
+<span class="mi">2</span><span class="o">.</span> <span class="n">accuracy</span><span class="o">.</span><span class="n">default</span><span class="p">(</span><span class="n">fit</span><span class="p">)</span>
+<span class="mi">3</span><span class="o">.</span> <span class="n">stop</span><span class="p">(</span><span class="s2">&quot;First argument should be a forecast object or a time series.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">fit</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Holt-Winters exponential smoothing without trend and without seasonal component.
+
+Call:
+HoltWinters(x = data_ts, beta = FALSE, gamma = FALSE)
+
+Smoothing parameters:
+ alpha: 0.9999262
+ beta : FALSE
+ gamma: FALSE
+
+Coefficients:
+      [,1]
+a 9434.748
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">forecast</span><span class="p">(</span><span class="n">fit</span><span class="p">,</span> <span class="m">3</span><span class="p">)</span>
+<span class="nf">plot</span><span class="p">(</span><span class="nf">forecast</span><span class="p">(</span><span class="n">fit</span><span class="p">,</span> <span class="m">100</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         Point Forecast    Lo 80     Hi 80    Lo 95    Hi 95
+6.952381       9434.748 9045.771  9823.726 8839.859 10029.64
+6.958333       9434.748 8884.672  9984.825 8593.479 10276.02
+6.964286       9434.748 8761.053 10108.444 8404.420 10465.08
+</pre></div>
+</div>
+<img alt="../../_images/demand_20_1.png" src="../../_images/demand_20_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="arima">
+<h3>Arima<a class="headerlink" href="#arima" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">fit</span> <span class="o">=</span> <span class="nf">arima</span><span class="p">(</span><span class="n">data_ts</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">q</span><span class="p">))</span>
+
+<span class="c1">#accuracy(fit)</span>
+
+<span class="nf">forecast</span><span class="p">(</span><span class="n">fit</span><span class="p">,</span> <span class="m">5</span><span class="p">)</span>
+<span class="nf">plot</span><span class="p">(</span><span class="nf">forecast</span><span class="p">(</span><span class="n">fit</span><span class="p">,</span> <span class="m">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="n">Error</span> <span class="ow">in</span> <span class="n">arima</span><span class="p">(</span><span class="n">data_ts</span><span class="p">,</span> <span class="n">order</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">q</span><span class="p">)):</span> <span class="nb">object</span> <span class="s1">&#39;p&#39;</span> <span class="ow">not</span> <span class="n">found</span>
+<span class="ne">Traceback</span>:
+
+<span class="mi">1</span><span class="o">.</span> <span class="n">arima</span><span class="p">(</span><span class="n">data_ts</span><span class="p">,</span> <span class="n">order</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">q</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">fit</span> <span class="o">&lt;-</span> <span class="nf">ets</span><span class="p">(</span><span class="n">data_ts</span><span class="p">)</span>
+
+
+<span class="nf">plot</span><span class="p">(</span><span class="nf">forecast</span><span class="p">(</span><span class="n">fit</span><span class="p">,</span> <span class="m">50</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message in ets(data_ts):
+“I can&#39;t handle data with frequency greater than 24. Seasonality will be ignored. Try stlf() if you need seasonal forecasts.”
+</pre></div>
+</div>
+<img alt="../../_images/demand_23_1.png" src="../../_images/demand_23_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Automated forecasting using an ARIMA model</span>
+<span class="n">fit</span> <span class="o">&lt;-</span> <span class="nf">auto.arima</span><span class="p">(</span><span class="n">data_ts</span><span class="p">)</span>
+<span class="nf">plot</span><span class="p">(</span><span class="nf">forecast</span><span class="p">(</span><span class="n">fit</span><span class="p">,</span> <span class="m">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/demand_25_0.png" src="../../_images/demand_25_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="nf">forecast</span><span class="p">(</span><span class="n">fit</span><span class="p">,</span> <span class="m">50</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/demand_26_0.png" src="../../_images/demand_26_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># remove last date</span>
+<span class="n">dt</span>  <span class="o">&lt;-</span> <span class="n">dt</span><span class="p">[</span><span class="o">-</span><span class="nf">nrow</span><span class="p">(</span><span class="n">dt</span><span class="p">),]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">dt</span><span class="o">$</span><span class="n">TIME_INTERVAL</span>  <span class="o">&lt;-</span>  <span class="nf">ymd_hms</span><span class="p">(</span><span class="n">dt</span><span class="o">$</span><span class="n">TIME_INTERVAL</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">dt</span><span class="o">$</span><span class="n">HOUR</span>  <span class="o">&lt;-</span> <span class="nf">hour</span><span class="p">(</span><span class="n">dt</span><span class="o">$</span><span class="n">TIME_INTERVAL</span><span class="p">)</span> <span class="o">+</span> <span class="m">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">dt</span><span class="o">$</span><span class="n">WEEK_NUM</span>  <span class="o">&lt;-</span>  <span class="nf">as.numeric</span><span class="p">(</span><span class="nf">strftime</span><span class="p">(</span><span class="nf">as.Date</span><span class="p">(</span><span class="n">dt</span><span class="o">$</span><span class="n">TIME_INTERVAL</span><span class="p">,</span> <span class="s">&quot;%Y-%m-%d&quot;</span><span class="p">),</span> <span class="s">&quot;%u&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message in as.POSIXlt.POSIXct(x, tz = tz):
+“unknown timezone &#39;%Y-%m-%d&#39;”
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">period</span>  <span class="o">&lt;-</span> <span class="m">24</span>
+<span class="n">N</span> <span class="o">&lt;-</span> <span class="nf">nrow</span><span class="p">(</span><span class="n">dt</span><span class="p">)</span> <span class="c1"># number of observations in the train set</span>
+<span class="n">window</span> <span class="o">&lt;-</span> <span class="n">N</span> <span class="o">/</span> <span class="n">period</span> <span class="c1"># number of days in the train set</span>
+<span class="n">matrix_data</span> <span class="o">&lt;-</span> <span class="nf">data.table</span><span class="p">(</span><span class="n">Load</span> <span class="o">=</span> <span class="n">dt</span><span class="p">[,</span> <span class="n">MKT_REQT</span><span class="p">],</span>
+                         <span class="n">Daily</span> <span class="o">=</span> <span class="nf">rep</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="n">period</span><span class="p">,</span> <span class="n">window</span><span class="p">),</span>
+                         <span class="n">Weekly</span> <span class="o">=</span> <span class="n">dt</span><span class="p">[,</span> <span class="n">WEEK_NUM</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">matrix_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+<caption>A data.table: 1200 × 3</caption>
+<thead>
+	<tr><th scope=col>Load</th><th scope=col>Daily</th><th scope=col>Weekly</th></tr>
+	<tr><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>7763.500</td><td> 1</td><td>6</td></tr>
+	<tr><td>7887.279</td><td> 2</td><td>6</td></tr>
+	<tr><td>7527.432</td><td> 3</td><td>6</td></tr>
+	<tr><td>7326.856</td><td> 4</td><td>6</td></tr>
+	<tr><td>7104.273</td><td> 5</td><td>6</td></tr>
+	<tr><td>6941.924</td><td> 6</td><td>6</td></tr>
+	<tr><td>7008.685</td><td> 7</td><td>6</td></tr>
+	<tr><td>7254.535</td><td> 8</td><td>6</td></tr>
+	<tr><td>7877.656</td><td> 9</td><td>6</td></tr>
+	<tr><td>8612.843</td><td>10</td><td>6</td></tr>
+	<tr><td>8951.603</td><td>11</td><td>6</td></tr>
+	<tr><td>9140.541</td><td>12</td><td>6</td></tr>
+	<tr><td>8946.171</td><td>13</td><td>6</td></tr>
+	<tr><td>9153.241</td><td>14</td><td>6</td></tr>
+	<tr><td>9186.632</td><td>15</td><td>6</td></tr>
+	<tr><td>8894.834</td><td>16</td><td>6</td></tr>
+	<tr><td>8689.929</td><td>17</td><td>6</td></tr>
+	<tr><td>8477.302</td><td>18</td><td>6</td></tr>
+	<tr><td>8765.159</td><td>19</td><td>6</td></tr>
+	<tr><td>8962.177</td><td>20</td><td>6</td></tr>
+	<tr><td>9069.043</td><td>21</td><td>6</td></tr>
+	<tr><td>9126.257</td><td>22</td><td>6</td></tr>
+	<tr><td>8931.969</td><td>23</td><td>6</td></tr>
+	<tr><td>8609.438</td><td>24</td><td>6</td></tr>
+	<tr><td>8238.253</td><td> 1</td><td>7</td></tr>
+	<tr><td>7989.458</td><td> 2</td><td>7</td></tr>
+	<tr><td>7720.821</td><td> 3</td><td>7</td></tr>
+	<tr><td>7454.262</td><td> 4</td><td>7</td></tr>
+	<tr><td>7252.114</td><td> 5</td><td>7</td></tr>
+	<tr><td>6998.883</td><td> 6</td><td>7</td></tr>
+	<tr><td>⋮</td><td>⋮</td><td>⋮</td></tr>
+	<tr><td>8604.976</td><td>19</td><td>5</td></tr>
+	<tr><td>8685.551</td><td>20</td><td>5</td></tr>
+	<tr><td>8747.549</td><td>21</td><td>5</td></tr>
+	<tr><td>8782.125</td><td>22</td><td>5</td></tr>
+	<tr><td>8556.896</td><td>23</td><td>5</td></tr>
+	<tr><td>8254.362</td><td>24</td><td>5</td></tr>
+	<tr><td>7979.416</td><td> 1</td><td>6</td></tr>
+	<tr><td>7712.682</td><td> 2</td><td>6</td></tr>
+	<tr><td>7479.121</td><td> 3</td><td>6</td></tr>
+	<tr><td>7228.326</td><td> 4</td><td>6</td></tr>
+	<tr><td>7125.363</td><td> 5</td><td>6</td></tr>
+	<tr><td>7029.163</td><td> 6</td><td>6</td></tr>
+	<tr><td>6925.574</td><td> 7</td><td>6</td></tr>
+	<tr><td>7234.852</td><td> 8</td><td>6</td></tr>
+	<tr><td>7670.774</td><td> 9</td><td>6</td></tr>
+	<tr><td>8107.201</td><td>10</td><td>6</td></tr>
+	<tr><td>8568.875</td><td>11</td><td>6</td></tr>
+	<tr><td>8726.774</td><td>12</td><td>6</td></tr>
+	<tr><td>8657.291</td><td>13</td><td>6</td></tr>
+	<tr><td>8831.841</td><td>14</td><td>6</td></tr>
+	<tr><td>8600.313</td><td>15</td><td>6</td></tr>
+	<tr><td>8294.451</td><td>16</td><td>6</td></tr>
+	<tr><td>8055.973</td><td>17</td><td>6</td></tr>
+	<tr><td>7867.397</td><td>18</td><td>6</td></tr>
+	<tr><td>8218.355</td><td>19</td><td>6</td></tr>
+	<tr><td>8460.562</td><td>20</td><td>6</td></tr>
+	<tr><td>8400.203</td><td>21</td><td>6</td></tr>
+	<tr><td>8444.838</td><td>22</td><td>6</td></tr>
+	<tr><td>8189.015</td><td>23</td><td>6</td></tr>
+	<tr><td>7973.204</td><td>24</td><td>6</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">n_date</span> <span class="o">&lt;-</span> <span class="nf">unique</span><span class="p">(</span><span class="n">dt</span><span class="p">[,</span> <span class="n">TIME_INTERVAL</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">data_train</span> <span class="o">&lt;-</span> <span class="n">dt</span><span class="p">[</span><span class="n">TIME_INTERVAL</span> <span class="o">%in%</span> <span class="n">n_date</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">1176</span><span class="p">]]</span>
+<span class="n">data_test</span> <span class="o">&lt;-</span> <span class="n">dt</span><span class="p">[</span><span class="n">TIME_INTERVAL</span> <span class="o">%in%</span> <span class="n">n_date</span><span class="p">[</span><span class="m">1177</span><span class="o">:</span><span class="m">1200</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">data_ts</span> <span class="o">&lt;-</span> <span class="nf">ts</span><span class="p">(</span><span class="n">data_train</span><span class="o">$</span><span class="n">MKT_REQT</span><span class="p">,</span> <span class="n">freq</span> <span class="o">=</span> <span class="n">period</span> <span class="o">*</span> <span class="m">7</span><span class="p">)</span>
+<span class="n">decomp_ts</span> <span class="o">&lt;-</span> <span class="nf">stl</span><span class="p">(</span><span class="n">data_ts</span><span class="p">,</span> <span class="n">s.window</span> <span class="o">=</span> <span class="s">&quot;periodic&quot;</span><span class="p">,</span> <span class="n">robust</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span><span class="o">$</span><span class="n">time.series</span>
+ 
+<span class="n">decomp_stl</span> <span class="o">&lt;-</span> <span class="nf">data.table</span><span class="p">(</span><span class="n">MKT_REQT</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="n">data_train</span><span class="o">$</span><span class="n">MKT_REQT</span><span class="p">,</span> <span class="nf">as.numeric</span><span class="p">(</span><span class="n">decomp_ts</span><span class="p">)),</span>
+                         <span class="n">TIME_INTERVAL</span> <span class="o">=</span> <span class="nf">rep</span><span class="p">(</span><span class="n">data_train</span><span class="p">[,</span><span class="n">TIME_INTERVAL</span><span class="p">],</span> <span class="nf">ncol</span><span class="p">(</span><span class="n">decomp_ts</span><span class="p">)</span><span class="m">+1</span><span class="p">),</span>
+                         <span class="n">Type</span> <span class="o">=</span> <span class="nf">factor</span><span class="p">(</span><span class="nf">rep</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;original data&quot;</span><span class="p">,</span> <span class="nf">colnames</span><span class="p">(</span><span class="n">decomp_ts</span><span class="p">)),</span>
+                                       <span class="n">each</span> <span class="o">=</span> <span class="nf">nrow</span><span class="p">(</span><span class="n">decomp_ts</span><span class="p">)),</span>
+                                       <span class="n">levels</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;original data&quot;</span><span class="p">,</span> <span class="nf">colnames</span><span class="p">(</span><span class="n">decomp_ts</span><span class="p">))))</span>
+ 
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">decomp_stl</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">TIME_INTERVAL</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">MKT_REQT</span><span class="p">))</span> <span class="o">+</span>
+  <span class="nf">geom_line</span><span class="p">()</span> <span class="o">+</span> 
+  <span class="nf">facet_grid</span><span class="p">(</span><span class="n">Type</span> <span class="o">~</span> <span class="n">.</span><span class="p">,</span> <span class="n">scales</span> <span class="o">=</span> <span class="s">&quot;free_y&quot;</span><span class="p">,</span> <span class="n">switch</span> <span class="o">=</span> <span class="s">&quot;y&quot;</span><span class="p">)</span> <span class="o">+</span>
+  <span class="nf">labs</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s">&quot;Date&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="kc">NULL</span><span class="p">,</span>
+       <span class="n">title</span> <span class="o">=</span> <span class="s">&quot;Time Series Decomposition by STL&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/demand_35_0.png" src="../../_images/demand_35_0.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="constructing-features-to-model">
+<h2>Constructing features to model<a class="headerlink" href="#constructing-features-to-model" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># multiseasonal object</span>
+<span class="n">data_msts</span> <span class="o">&lt;-</span> <span class="nf">msts</span><span class="p">(</span><span class="n">data_train</span><span class="o">$</span><span class="n">MKT_REQT</span><span class="p">,</span> <span class="n">seasonal.periods</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="n">period</span><span class="p">,</span> <span class="n">period</span><span class="o">*</span><span class="m">7</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">K</span> <span class="o">&lt;-</span> <span class="m">2</span>
+<span class="n">fuur</span> <span class="o">&lt;-</span> <span class="nf">fourier</span><span class="p">(</span><span class="n">data_msts</span><span class="p">,</span> <span class="n">K</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="n">K</span><span class="p">,</span> <span class="n">K</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># 2 pairs of sine and cosine values for daily and weekly season</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">fuur</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+<caption>A matrix: 6 × 8 of type dbl</caption>
+<thead>
+	<tr><th scope=col>S1-24</th><th scope=col>C1-24</th><th scope=col>S2-24</th><th scope=col>C2-24</th><th scope=col>S1-168</th><th scope=col>C1-168</th><th scope=col>S2-168</th><th scope=col>C2-168</th></tr>
+</thead>
+<tbody>
+	<tr><td>0.2588190</td><td>0.9659258</td><td>0.5000000</td><td> 0.8660254</td><td>0.03739119</td><td>0.9993007</td><td>0.07473009</td><td>0.9972038</td></tr>
+	<tr><td>0.5000000</td><td>0.8660254</td><td>0.8660254</td><td> 0.5000000</td><td>0.07473009</td><td>0.9972038</td><td>0.14904227</td><td>0.9888308</td></tr>
+	<tr><td>0.7071068</td><td>0.7071068</td><td>1.0000000</td><td> 0.0000000</td><td>0.11196448</td><td>0.9937122</td><td>0.22252093</td><td>0.9749279</td></tr>
+	<tr><td>0.8660254</td><td>0.5000000</td><td>0.8660254</td><td>-0.5000000</td><td>0.14904227</td><td>0.9888308</td><td>0.29475517</td><td>0.9555728</td></tr>
+	<tr><td>0.9659258</td><td>0.2588190</td><td>0.5000000</td><td>-0.8660254</td><td>0.18591161</td><td>0.9825665</td><td>0.36534102</td><td>0.9308737</td></tr>
+	<tr><td>1.0000000</td><td>0.0000000</td><td>0.0000000</td><td>-1.0000000</td><td>0.22252093</td><td>0.9749279</td><td>0.43388374</td><td>0.9009689</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># forecasting the trend from STL</span>
+<span class="n">trend_part</span> <span class="o">&lt;-</span> <span class="nf">ts</span><span class="p">(</span><span class="n">decomp_ts</span><span class="p">[,</span><span class="m">2</span><span class="p">])</span>
+<span class="n">trend_fit</span> <span class="o">&lt;-</span> <span class="nf">auto.arima</span><span class="p">(</span><span class="n">trend_part</span><span class="p">)</span>
+<span class="n">trend_for</span> <span class="o">&lt;-</span> <span class="nf">forecast</span><span class="p">(</span><span class="n">trend_fit</span><span class="p">,</span> <span class="n">period</span><span class="p">)</span><span class="o">$</span><span class="n">mean</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">trend_data</span> <span class="o">&lt;-</span> <span class="nf">data.table</span><span class="p">(</span><span class="n">MKT_REQT</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="n">decomp_ts</span><span class="p">[,</span><span class="m">2</span><span class="p">],</span> <span class="n">trend_for</span><span class="p">),</span>
+                         <span class="n">TIME_INTERVAL</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="n">data_train</span><span class="o">$</span><span class="n">TIME_INTERVAL</span><span class="p">,</span> <span class="n">data_test</span><span class="o">$</span><span class="n">TIME_INTERVAL</span><span class="p">),</span>
+                         <span class="n">Type</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="nf">rep</span><span class="p">(</span><span class="s">&quot;Real&quot;</span><span class="p">,</span> <span class="nf">nrow</span><span class="p">(</span><span class="n">data_train</span><span class="p">)),</span> <span class="nf">rep</span><span class="p">(</span><span class="s">&quot;Forecast&quot;</span><span class="p">,</span>
+                                                                     <span class="nf">nrow</span><span class="p">(</span><span class="n">data_test</span><span class="p">))))</span>
+ 
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">trend_data</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">TIME_INTERVAL</span><span class="p">,</span> <span class="n">MKT_REQT</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">Type</span><span class="p">))</span> <span class="o">+</span>
+  <span class="nf">geom_line</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="m">1.2</span><span class="p">)</span> <span class="o">+</span>
+  <span class="nf">labs</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="nf">paste</span><span class="p">(</span><span class="n">trend_fit</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/demand_41_0.png" src="../../_images/demand_41_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add lag feature</span>
+<span class="n">N</span> <span class="o">&lt;-</span> <span class="nf">nrow</span><span class="p">(</span><span class="n">data_train</span><span class="p">)</span>
+<span class="n">window</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="n">N</span> <span class="o">/</span> <span class="n">period</span><span class="p">)</span> <span class="o">-</span> <span class="m">1</span> <span class="c1"># number of days in train set minus lag</span>
+ 
+<span class="n">new_MKT_REQT</span> <span class="o">&lt;-</span> <span class="nf">rowSums</span><span class="p">(</span><span class="n">decomp_ts</span><span class="p">[,</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">3</span><span class="p">)])</span> <span class="c1"># detrended load</span>
+<span class="n">lag_seas</span> <span class="o">&lt;-</span> <span class="n">decomp_ts</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="p">(</span><span class="n">period</span><span class="o">*</span><span class="n">window</span><span class="p">),</span> <span class="m">1</span><span class="p">]</span> <span class="c1"># seasonal part of time series as lag feature</span>
+ 
+<span class="n">matrix_train</span> <span class="o">&lt;-</span> <span class="nf">data.table</span><span class="p">(</span><span class="n">MKT_REQT</span> <span class="o">=</span> <span class="nf">tail</span><span class="p">(</span><span class="n">new_MKT_REQT</span><span class="p">,</span> <span class="n">window</span><span class="o">*</span><span class="n">period</span><span class="p">),</span>
+                           <span class="n">fuur</span><span class="p">[(</span><span class="n">period</span> <span class="o">+</span> <span class="m">1</span><span class="p">)</span><span class="o">:</span><span class="n">N</span><span class="p">,],</span>
+                           <span class="n">Lag</span> <span class="o">=</span> <span class="n">lag_seas</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">matrix_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+<caption>A data.table: 6 × 10</caption>
+<thead>
+	<tr><th scope=col>MKT_REQT</th><th scope=col>S1-24</th><th scope=col>C1-24</th><th scope=col>S2-24</th><th scope=col>C2-24</th><th scope=col>S1-168</th><th scope=col>C1-168</th><th scope=col>S2-168</th><th scope=col>C2-168</th><th scope=col>Lag</th></tr>
+	<tr><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td> -470.1428</td><td>0.2588190</td><td>0.9659258</td><td>0.5000000</td><td> 0.8660254</td><td>0.8045978</td><td>0.5938202</td><td>0.9555728</td><td>-0.2947552</td><td> -346.6269</td></tr>
+	<tr><td> -719.2230</td><td>0.5000000</td><td>0.8660254</td><td>0.8660254</td><td> 0.5000000</td><td>0.8262388</td><td>0.5633201</td><td>0.9308737</td><td>-0.3653410</td><td> -638.9261</td></tr>
+	<tr><td> -988.1449</td><td>0.7071068</td><td>0.7071068</td><td>1.0000000</td><td> 0.0000000</td><td>0.8467242</td><td>0.5320321</td><td>0.9009689</td><td>-0.4338837</td><td> -904.8643</td></tr>
+	<tr><td>-1254.7294</td><td>0.8660254</td><td>0.5000000</td><td>0.8660254</td><td>-0.5000000</td><td>0.8660254</td><td>0.5000000</td><td>0.8660254</td><td>-0.5000000</td><td>-1109.9838</td></tr>
+	<tr><td>-1456.9022</td><td>0.9659258</td><td>0.2588190</td><td>0.5000000</td><td>-0.8660254</td><td>0.8841154</td><td>0.4672686</td><td>0.8262388</td><td>-0.5633201</td><td>-1237.1313</td></tr>
+	<tr><td>-1710.1593</td><td>1.0000000</td><td>0.0000000</td><td>0.0000000</td><td>-1.0000000</td><td>0.9009689</td><td>0.4338837</td><td>0.7818315</td><td>-0.6234898</td><td>-1341.9789</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Accuracy MAPE - Mean Absolute Percentage Error</span>
+<span class="n">mape</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">real</span><span class="p">,</span> <span class="n">pred</span><span class="p">){</span>
+  <span class="nf">return</span><span class="p">(</span><span class="m">100</span> <span class="o">*</span> <span class="nf">mean</span><span class="p">(</span><span class="nf">abs</span><span class="p">((</span><span class="n">real</span> <span class="o">-</span> <span class="n">pred</span><span class="p">)</span><span class="o">/</span><span class="n">real</span><span class="p">)))</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="rpart">
+<h2>RPART<a class="headerlink" href="#rpart" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">tree_1</span> <span class="o">&lt;-</span> <span class="nf">rpart</span><span class="p">(</span><span class="n">MKT_REQT</span> <span class="o">~</span> <span class="n">.</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">matrix_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">tree_1</span><span class="o">$</span><span class="n">variable.importance</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+.dl-inline {width: auto; margin:0; padding: 0}
+.dl-inline>dt, .dl-inline>dd {float: none; width: auto; display: inline-block}
+.dl-inline>dt::after {content: ":\0020"; padding-right: .5ex}
+.dl-inline>dt:not(:first-of-type) {padding-left: .5ex}
+</style><dl class=dl-inline><dt>Lag</dt><dd>551671375.474085</dd><dt>S1-24</dt><dd>530809910.852828</dd><dt>S1-168</dt><dd>198491988.795902</dd><dt>C1-24</dt><dd>179980248.689136</dd><dt>S2-24</dt><dd>84011521.3357531</dd><dt>C2-24</dt><dd>63647554.7680643</dd><dt>C2-168</dt><dd>52135692.1288616</dd><dt>S2-168</dt><dd>36623744.5101724</dd><dt>C1-168</dt><dd>31529369.1744331</dd></dl>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;Number of splits: &quot;</span><span class="p">,</span> <span class="n">tree_1</span><span class="o">$</span><span class="n">cptable</span><span class="p">[</span><span class="nf">dim</span><span class="p">(</span><span class="n">tree_1</span><span class="o">$</span><span class="n">cptable</span><span class="p">)[</span><span class="m">1</span><span class="p">],</span> <span class="s">&quot;nsplit&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><span style=white-space:pre-wrap>'Number of splits:  9'</span></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;rpart.plot&quot;</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">rpart.plot</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The downloaded binary packages are in
+	/var/folders/47/k_hjs6l952v72vlq22ljz29w0000gn/T//RtmptCLiw5/downloaded_packages
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">rpart.plot</span><span class="p">(</span><span class="n">tree_1</span><span class="p">,</span> <span class="n">digits</span> <span class="o">=</span> <span class="m">2</span><span class="p">,</span> 
+           <span class="n">box.palette</span> <span class="o">=</span> <span class="n">viridis</span><span class="o">::</span><span class="nf">viridis</span><span class="p">(</span><span class="m">10</span><span class="p">,</span> <span class="n">option</span> <span class="o">=</span> <span class="s">&quot;D&quot;</span><span class="p">,</span> <span class="n">begin</span> <span class="o">=</span> <span class="m">0.85</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="m">0</span><span class="p">),</span> 
+           <span class="n">shadow.col</span> <span class="o">=</span> <span class="s">&quot;grey65&quot;</span><span class="p">,</span> <span class="n">col</span> <span class="o">=</span> <span class="s">&quot;grey99&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/demand_50_0.png" src="../../_images/demand_50_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">datas</span> <span class="o">&lt;-</span> <span class="nf">data.table</span><span class="p">(</span><span class="n">MKT_REQT</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="n">matrix_train</span><span class="o">$</span><span class="n">MKT_REQT</span><span class="p">,</span>
+                             <span class="nf">predict</span><span class="p">(</span><span class="n">tree_1</span><span class="p">)),</span>
+                    <span class="n">TIME_INTERVAL</span> <span class="o">=</span> <span class="nf">rep</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="nf">length</span><span class="p">(</span><span class="n">matrix_train</span><span class="o">$</span><span class="n">MKT_REQT</span><span class="p">),</span> <span class="m">2</span><span class="p">),</span>
+                    <span class="n">Type</span> <span class="o">=</span> <span class="nf">rep</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;Real&quot;</span><span class="p">,</span> <span class="s">&quot;RPART&quot;</span><span class="p">),</span> <span class="n">each</span> <span class="o">=</span> <span class="nf">length</span><span class="p">(</span><span class="n">matrix_train</span><span class="o">$</span><span class="n">MKT_REQT</span><span class="p">)))</span>
+ 
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">datas</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">TIME_INTERVAL</span><span class="p">,</span> <span class="n">MKT_REQT</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">Type</span><span class="p">))</span> <span class="o">+</span>
+  <span class="nf">geom_line</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="m">0.8</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="m">0.75</span><span class="p">)</span> <span class="o">+</span>
+  <span class="nf">labs</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="s">&quot;Detrended load&quot;</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span> <span class="s">&quot;Fitted values from RPART tree&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/demand_51_0.png" src="../../_images/demand_51_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">mape</span><span class="p">(</span><span class="n">matrix_train</span><span class="o">$</span><span class="n">MKT_REQT</span><span class="p">,</span> <span class="nf">predict</span><span class="p">(</span><span class="n">tree_1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">559.08490863259</div></div>
+</div>
+</div>
+<div class="section" id="improvment">
+<h2>Improvment<a class="headerlink" href="#improvment" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">tree_2</span> <span class="o">&lt;-</span> <span class="nf">rpart</span><span class="p">(</span><span class="n">MKT_REQT</span> <span class="o">~</span> <span class="n">.</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">matrix_train</span><span class="p">,</span>
+                <span class="n">control</span> <span class="o">=</span> <span class="nf">rpart.control</span><span class="p">(</span><span class="n">minsplit</span> <span class="o">=</span> <span class="m">2</span><span class="p">,</span>
+                                        <span class="n">maxdepth</span> <span class="o">=</span> <span class="m">30</span><span class="p">,</span>
+                                        <span class="n">cp</span> <span class="o">=</span> <span class="m">0.000001</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="n">tree_2</span><span class="p">,</span> <span class="n">compress</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/demand_55_0.png" src="../../_images/demand_55_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">tree_2</span><span class="o">$</span><span class="n">cptable</span><span class="p">[</span><span class="nf">dim</span><span class="p">(</span><span class="n">tree_2</span><span class="o">$</span><span class="n">cptable</span><span class="p">)[</span><span class="m">1</span><span class="p">],</span> <span class="s">&quot;nsplit&quot;</span><span class="p">]</span> <span class="c1"># Number of splits</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">465</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">datas</span> <span class="o">&lt;-</span> <span class="nf">data.table</span><span class="p">(</span><span class="n">MKT_REQT</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="n">matrix_train</span><span class="o">$</span><span class="n">MKT_REQT</span><span class="p">,</span>
+                             <span class="nf">predict</span><span class="p">(</span><span class="n">tree_2</span><span class="p">)),</span>
+                    <span class="n">TIME_INTERVAL</span> <span class="o">=</span> <span class="nf">rep</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="nf">length</span><span class="p">(</span><span class="n">matrix_train</span><span class="o">$</span><span class="n">MKT_REQT</span><span class="p">),</span> <span class="m">2</span><span class="p">),</span>
+                    <span class="n">Type</span> <span class="o">=</span> <span class="nf">rep</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;Real&quot;</span><span class="p">,</span> <span class="s">&quot;RPART&quot;</span><span class="p">),</span> <span class="n">each</span> <span class="o">=</span> <span class="nf">length</span><span class="p">(</span><span class="n">matrix_train</span><span class="o">$</span><span class="n">MKT_REQT</span><span class="p">)))</span>
+ 
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">datas</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">TIME_INTERVAL</span><span class="p">,</span> <span class="n">MKT_REQT</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">Type</span><span class="p">))</span> <span class="o">+</span>
+  <span class="nf">geom_line</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="m">0.8</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="m">0.75</span><span class="p">)</span> <span class="o">+</span>
+  <span class="nf">labs</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="s">&quot;Detrended load&quot;</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span> <span class="s">&quot;Fitted values from RPART&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/demand_57_0.png" src="../../_images/demand_57_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">mape</span><span class="p">(</span><span class="n">matrix_train</span><span class="o">$</span><span class="n">MKT_REQT</span><span class="p">,</span> <span class="nf">predict</span><span class="p">(</span><span class="n">tree_2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">68.9386442327148</div></div>
+</div>
+</div>
+<div class="section" id="add-trend-forecast">
+<h2>Add trend forecast<a class="headerlink" href="#add-trend-forecast" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">test_lag</span> <span class="o">&lt;-</span> <span class="n">decomp_ts</span><span class="p">[((</span><span class="n">period</span><span class="o">*</span><span class="n">window</span><span class="p">)</span><span class="m">+1</span><span class="p">)</span><span class="o">:</span><span class="n">N</span><span class="p">,</span> <span class="m">1</span><span class="p">]</span>
+<span class="n">fuur_test</span> <span class="o">&lt;-</span> <span class="nf">fourier</span><span class="p">(</span><span class="n">data_msts</span><span class="p">,</span> <span class="n">K</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="n">K</span><span class="p">,</span> <span class="n">K</span><span class="p">),</span> <span class="n">h</span> <span class="o">=</span> <span class="n">period</span><span class="p">)</span>
+ 
+<span class="n">matrix_test</span> <span class="o">&lt;-</span> <span class="nf">data.table</span><span class="p">(</span><span class="n">fuur_test</span><span class="p">,</span>
+                          <span class="n">Lag</span> <span class="o">=</span> <span class="n">test_lag</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">for_rpart</span> <span class="o">&lt;-</span> <span class="nf">predict</span><span class="p">(</span><span class="n">tree_2</span><span class="p">,</span> <span class="n">matrix_test</span><span class="p">)</span> <span class="o">+</span> <span class="n">trend_for</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">data_for</span> <span class="o">&lt;-</span> <span class="nf">data.table</span><span class="p">(</span><span class="n">MKT_REQT</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="n">data_train</span><span class="o">$</span><span class="n">MKT_REQT</span><span class="p">,</span> <span class="n">data_test</span><span class="o">$</span><span class="n">MKT_REQT</span><span class="p">,</span> <span class="n">for_rpart</span><span class="p">),</span>
+                       <span class="n">TIME_INTERVAL</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="n">data_train</span><span class="o">$</span><span class="n">TIME_INTERVAL</span><span class="p">,</span> <span class="nf">rep</span><span class="p">(</span><span class="n">data_test</span><span class="o">$</span><span class="n">TIME_INTERVAL</span><span class="p">,</span> <span class="m">2</span><span class="p">)),</span>
+                       <span class="n">Type</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="nf">rep</span><span class="p">(</span><span class="s">&quot;Train data&quot;</span><span class="p">,</span> <span class="nf">nrow</span><span class="p">(</span><span class="n">data_train</span><span class="p">)),</span>
+                                <span class="nf">rep</span><span class="p">(</span><span class="s">&quot;Test data&quot;</span><span class="p">,</span> <span class="nf">nrow</span><span class="p">(</span><span class="n">data_test</span><span class="p">)),</span>
+                                <span class="nf">rep</span><span class="p">(</span><span class="s">&quot;Forecast&quot;</span><span class="p">,</span> <span class="nf">nrow</span><span class="p">(</span><span class="n">data_test</span><span class="p">))))</span>
+ 
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">data_for</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">TIME_INTERVAL</span><span class="p">,</span> <span class="n">MKT_REQT</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">Type</span><span class="p">))</span> <span class="o">+</span>
+  <span class="nf">geom_line</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="m">0.8</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="m">0.75</span><span class="p">)</span> <span class="o">+</span>
+  <span class="nf">facet_zoom</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">TIME_INTERVAL</span> <span class="o">%in%</span> <span class="n">data_test</span><span class="o">$</span><span class="n">TIME_INTERVAL</span><span class="p">,</span> <span class="n">zoom.size</span> <span class="o">=</span> <span class="m">1.2</span><span class="p">)</span> <span class="o">+</span>
+  <span class="nf">labs</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s">&quot;Forecast from RPART&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/demand_62_0.png" src="../../_images/demand_62_0.png" />
 </div>
 </div>
 </div>
