@@ -30,27 +30,8 @@ autoplot(stl(data_ts, s.window = "periodic", robust = TRUE))
 fit = HoltWinters(data_ts, beta=FALSE, gamma=FALSE)
 
 
-accuracy(fit)
-
-
-fit
-
-forecast(fit, 3)
-plot(forecast(fit, 100))
-
-
-fit = arima(data_ts, order=c(p, d, q))
-
-#accuracy(fit)
-
-forecast(fit, 5)
-plot(forecast(fit, 5))
-
-fit <- ets(data_ts)
-
-
-plot(forecast(fit, 50))
-
+forecast(fit, 24)
+plot(forecast(fit, 24))
 
 
 # Automated forecasting using an ARIMA model
@@ -58,11 +39,10 @@ fit <- auto.arima(data_ts)
 plot(forecast(fit, 5))
 
 
-plot(forecast(fit, 50))
+plot(forecast(fit, 24))
 
 # remove last date
 dt  <- dt[-nrow(dt),]
-
 
 dt$TIME_INTERVAL  <-  ymd_hms(dt$TIME_INTERVAL)
 
@@ -106,13 +86,13 @@ ggplot(decomp_stl, aes(x = TIME_INTERVAL, y = MKT_REQT)) +
 data_msts <- msts(data_train$MKT_REQT, seasonal.periods = c(period, period*7))
 
 
+# Fourier decomposition
 K <- 2
 fuur <- fourier(data_msts, K = c(K, K))
 
 # 2 pairs of sine and cosine values for daily and weekly season
 head(fuur)
 
-# forecasting the trend from STL
 trend_part <- ts(decomp_ts[,2])
 trend_fit <- auto.arima(trend_part)
 trend_for <- forecast(trend_fit, period)$mean
@@ -126,7 +106,6 @@ ggplot(trend_data, aes(TIME_INTERVAL, MKT_REQT, color = Type)) +
   geom_line(size = 1.2) +
   labs(title = paste(trend_fit))
 
-# Add lag feature
 N <- nrow(data_train)
 window <- (N / period) - 1 # number of days in train set minus lag
  

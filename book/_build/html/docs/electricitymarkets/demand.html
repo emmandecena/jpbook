@@ -346,22 +346,35 @@
   <a class="reference internal nav-link" href="#decomposition-using-stl">
    Decomposition using STL
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exponential-models">
-     Exponential Models
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#arima">
-     Arima
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exponential-models">
+   Exponential Models
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#arima">
+   Arima
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-prep-for-tree-model">
+   Data prep for tree model
+  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#constructing-features-to-model">
    Constructing features to model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#forecasting-the-trend-from-stl">
+   forecasting the trend from STL
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#add-lag-feature">
+   Add lag feature
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -406,6 +419,31 @@
 <span class="nf">library</span><span class="p">(</span><span class="n">ggforce</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">rpart</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">lubridate</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message:
+“replacing previous import ‘vctrs::data_frame’ by ‘tibble::data_frame’ when loading ‘dplyr’”
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Registered S3 method overwritten by &#39;quantmod&#39;:
+  method            from
+  as.zoo.data.frame zoo 
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Attaching package: ‘lubridate’
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The following objects are masked from ‘package:data.table’:
+
+    hour, isoweek, mday, minute, month, quarter, second, wday, week,
+    yday, year
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The following objects are masked from ‘package:base’:
+
+    date, intersect, setdiff, union
 </pre></div>
 </div>
 </div>
@@ -521,8 +559,9 @@
 <img alt="../../_images/demand_15_0.png" src="../../_images/demand_15_0.png" />
 </div>
 </div>
+</div>
 <div class="section" id="exponential-models">
-<h3>Exponential Models<a class="headerlink" href="#exponential-models" title="Permalink to this headline">¶</a></h3>
+<h2>Exponential Models<a class="headerlink" href="#exponential-models" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">fit</span> <span class="o">=</span> <span class="nf">HoltWinters</span><span class="p">(</span><span class="n">data_ts</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
@@ -532,49 +571,8 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">accuracy</span><span class="p">(</span><span class="n">fit</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="n">Error</span> <span class="ow">in</span> <span class="n">accuracy</span><span class="o">.</span><span class="n">default</span><span class="p">(</span><span class="n">fit</span><span class="p">):</span> <span class="n">First</span> <span class="n">argument</span> <span class="n">should</span> <span class="n">be</span> <span class="n">a</span> <span class="n">forecast</span> <span class="nb">object</span> <span class="ow">or</span> <span class="n">a</span> <span class="n">time</span> <span class="n">series</span><span class="o">.</span>
-<span class="ne">Traceback</span>:
-
-<span class="mi">1</span><span class="o">.</span> <span class="n">accuracy</span><span class="p">(</span><span class="n">fit</span><span class="p">)</span>
-<span class="mi">2</span><span class="o">.</span> <span class="n">accuracy</span><span class="o">.</span><span class="n">default</span><span class="p">(</span><span class="n">fit</span><span class="p">)</span>
-<span class="mi">3</span><span class="o">.</span> <span class="n">stop</span><span class="p">(</span><span class="s2">&quot;First argument should be a forecast object or a time series.&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">fit</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Holt-Winters exponential smoothing without trend and without seasonal component.
-
-Call:
-HoltWinters(x = data_ts, beta = FALSE, gamma = FALSE)
-
-Smoothing parameters:
- alpha: 0.9999262
- beta : FALSE
- gamma: FALSE
-
-Coefficients:
-      [,1]
-a 9434.748
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">forecast</span><span class="p">(</span><span class="n">fit</span><span class="p">,</span> <span class="m">3</span><span class="p">)</span>
-<span class="nf">plot</span><span class="p">(</span><span class="nf">forecast</span><span class="p">(</span><span class="n">fit</span><span class="p">,</span> <span class="m">100</span><span class="p">))</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">forecast</span><span class="p">(</span><span class="n">fit</span><span class="p">,</span> <span class="m">24</span><span class="p">)</span>
+<span class="nf">plot</span><span class="p">(</span><span class="nf">forecast</span><span class="p">(</span><span class="n">fit</span><span class="p">,</span> <span class="m">24</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -583,51 +581,35 @@ a 9434.748
 6.952381       9434.748 9045.771  9823.726 8839.859 10029.64
 6.958333       9434.748 8884.672  9984.825 8593.479 10276.02
 6.964286       9434.748 8761.053 10108.444 8404.420 10465.08
+6.970238       9434.748 8656.837 10212.660 8245.035 10624.46
+6.976190       9434.748 8565.020 10304.477 8104.614 10764.88
+6.982143       9434.748 8482.011 10387.486 7977.662 10891.83
+6.988095       9434.748 8405.676 10463.820 7860.918 11008.58
+6.994048       9434.748 8334.626 10534.871 7752.256 11117.24
+7.000000       9434.748 8267.893 10601.604 7650.197 11219.30
+7.005952       9434.748 8204.776 10664.721 7553.668 11315.83
+7.011905       9434.748 8144.743 10724.754 7461.856 11407.64
+7.017857       9434.748 8087.383 10782.114 7374.130 11495.37
+7.023810       9434.748 8032.366 10837.130 7289.990 11579.51
+7.029762       9434.748 7979.428 10890.068 7209.029 11660.47
+7.035714       9434.748 7928.350 10941.147 7130.910 11738.59
+7.041667       9434.748 7878.947 10990.550 7055.355 11814.14
+7.047619       9434.748 7831.065 11038.431 6982.127 11887.37
+7.053571       9434.748 7784.573 11084.924 6911.022 11958.47
+7.059524       9434.748 7739.354 11130.142 6841.867 12027.63
+7.065476       9434.748 7695.311 11174.186 6774.509 12094.99
+7.071429       9434.748 7652.356 11217.141 6708.814 12160.68
+7.077381       9434.748 7610.412 11259.085 6644.666 12224.83
+7.083333       9434.748 7569.411 11300.086 6581.960 12287.54
+7.089286       9434.748 7529.291 11340.205 6520.603 12348.89
 </pre></div>
 </div>
-<img alt="../../_images/demand_20_1.png" src="../../_images/demand_20_1.png" />
+<img alt="../../_images/demand_18_1.png" src="../../_images/demand_18_1.png" />
 </div>
 </div>
 </div>
 <div class="section" id="arima">
-<h3>Arima<a class="headerlink" href="#arima" title="Permalink to this headline">¶</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">fit</span> <span class="o">=</span> <span class="nf">arima</span><span class="p">(</span><span class="n">data_ts</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">q</span><span class="p">))</span>
-
-<span class="c1">#accuracy(fit)</span>
-
-<span class="nf">forecast</span><span class="p">(</span><span class="n">fit</span><span class="p">,</span> <span class="m">5</span><span class="p">)</span>
-<span class="nf">plot</span><span class="p">(</span><span class="nf">forecast</span><span class="p">(</span><span class="n">fit</span><span class="p">,</span> <span class="m">5</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="n">Error</span> <span class="ow">in</span> <span class="n">arima</span><span class="p">(</span><span class="n">data_ts</span><span class="p">,</span> <span class="n">order</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">q</span><span class="p">)):</span> <span class="nb">object</span> <span class="s1">&#39;p&#39;</span> <span class="ow">not</span> <span class="n">found</span>
-<span class="ne">Traceback</span>:
-
-<span class="mi">1</span><span class="o">.</span> <span class="n">arima</span><span class="p">(</span><span class="n">data_ts</span><span class="p">,</span> <span class="n">order</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">q</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">fit</span> <span class="o">&lt;-</span> <span class="nf">ets</span><span class="p">(</span><span class="n">data_ts</span><span class="p">)</span>
-
-
-<span class="nf">plot</span><span class="p">(</span><span class="nf">forecast</span><span class="p">(</span><span class="n">fit</span><span class="p">,</span> <span class="m">50</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message in ets(data_ts):
-“I can&#39;t handle data with frequency greater than 24. Seasonality will be ignored. Try stlf() if you need seasonal forecasts.”
-</pre></div>
-</div>
-<img alt="../../_images/demand_23_1.png" src="../../_images/demand_23_1.png" />
-</div>
-</div>
+<h2>Arima<a class="headerlink" href="#arima" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Automated forecasting using an ARIMA model</span>
@@ -637,19 +619,22 @@ a 9434.748
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/demand_25_0.png" src="../../_images/demand_25_0.png" />
+<img alt="../../_images/demand_20_0.png" src="../../_images/demand_20_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="nf">forecast</span><span class="p">(</span><span class="n">fit</span><span class="p">,</span> <span class="m">50</span><span class="p">))</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="nf">forecast</span><span class="p">(</span><span class="n">fit</span><span class="p">,</span> <span class="m">24</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/demand_26_0.png" src="../../_images/demand_26_0.png" />
+<img alt="../../_images/demand_21_0.png" src="../../_images/demand_21_0.png" />
 </div>
 </div>
+</div>
+<div class="section" id="data-prep-for-tree-model">
+<h2>Data prep for tree model<a class="headerlink" href="#data-prep-for-tree-model" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># remove last date</span>
@@ -705,73 +690,18 @@ a 9434.748
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><table>
-<caption>A data.table: 1200 × 3</caption>
+<caption>A data.table: 6 × 3</caption>
 <thead>
 	<tr><th scope=col>Load</th><th scope=col>Daily</th><th scope=col>Weekly</th></tr>
 	<tr><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
 </thead>
 <tbody>
-	<tr><td>7763.500</td><td> 1</td><td>6</td></tr>
-	<tr><td>7887.279</td><td> 2</td><td>6</td></tr>
-	<tr><td>7527.432</td><td> 3</td><td>6</td></tr>
-	<tr><td>7326.856</td><td> 4</td><td>6</td></tr>
-	<tr><td>7104.273</td><td> 5</td><td>6</td></tr>
-	<tr><td>6941.924</td><td> 6</td><td>6</td></tr>
-	<tr><td>7008.685</td><td> 7</td><td>6</td></tr>
-	<tr><td>7254.535</td><td> 8</td><td>6</td></tr>
-	<tr><td>7877.656</td><td> 9</td><td>6</td></tr>
-	<tr><td>8612.843</td><td>10</td><td>6</td></tr>
-	<tr><td>8951.603</td><td>11</td><td>6</td></tr>
-	<tr><td>9140.541</td><td>12</td><td>6</td></tr>
-	<tr><td>8946.171</td><td>13</td><td>6</td></tr>
-	<tr><td>9153.241</td><td>14</td><td>6</td></tr>
-	<tr><td>9186.632</td><td>15</td><td>6</td></tr>
-	<tr><td>8894.834</td><td>16</td><td>6</td></tr>
-	<tr><td>8689.929</td><td>17</td><td>6</td></tr>
-	<tr><td>8477.302</td><td>18</td><td>6</td></tr>
-	<tr><td>8765.159</td><td>19</td><td>6</td></tr>
-	<tr><td>8962.177</td><td>20</td><td>6</td></tr>
-	<tr><td>9069.043</td><td>21</td><td>6</td></tr>
-	<tr><td>9126.257</td><td>22</td><td>6</td></tr>
-	<tr><td>8931.969</td><td>23</td><td>6</td></tr>
-	<tr><td>8609.438</td><td>24</td><td>6</td></tr>
-	<tr><td>8238.253</td><td> 1</td><td>7</td></tr>
-	<tr><td>7989.458</td><td> 2</td><td>7</td></tr>
-	<tr><td>7720.821</td><td> 3</td><td>7</td></tr>
-	<tr><td>7454.262</td><td> 4</td><td>7</td></tr>
-	<tr><td>7252.114</td><td> 5</td><td>7</td></tr>
-	<tr><td>6998.883</td><td> 6</td><td>7</td></tr>
-	<tr><td>⋮</td><td>⋮</td><td>⋮</td></tr>
-	<tr><td>8604.976</td><td>19</td><td>5</td></tr>
-	<tr><td>8685.551</td><td>20</td><td>5</td></tr>
-	<tr><td>8747.549</td><td>21</td><td>5</td></tr>
-	<tr><td>8782.125</td><td>22</td><td>5</td></tr>
-	<tr><td>8556.896</td><td>23</td><td>5</td></tr>
-	<tr><td>8254.362</td><td>24</td><td>5</td></tr>
-	<tr><td>7979.416</td><td> 1</td><td>6</td></tr>
-	<tr><td>7712.682</td><td> 2</td><td>6</td></tr>
-	<tr><td>7479.121</td><td> 3</td><td>6</td></tr>
-	<tr><td>7228.326</td><td> 4</td><td>6</td></tr>
-	<tr><td>7125.363</td><td> 5</td><td>6</td></tr>
-	<tr><td>7029.163</td><td> 6</td><td>6</td></tr>
-	<tr><td>6925.574</td><td> 7</td><td>6</td></tr>
-	<tr><td>7234.852</td><td> 8</td><td>6</td></tr>
-	<tr><td>7670.774</td><td> 9</td><td>6</td></tr>
-	<tr><td>8107.201</td><td>10</td><td>6</td></tr>
-	<tr><td>8568.875</td><td>11</td><td>6</td></tr>
-	<tr><td>8726.774</td><td>12</td><td>6</td></tr>
-	<tr><td>8657.291</td><td>13</td><td>6</td></tr>
-	<tr><td>8831.841</td><td>14</td><td>6</td></tr>
-	<tr><td>8600.313</td><td>15</td><td>6</td></tr>
-	<tr><td>8294.451</td><td>16</td><td>6</td></tr>
-	<tr><td>8055.973</td><td>17</td><td>6</td></tr>
-	<tr><td>7867.397</td><td>18</td><td>6</td></tr>
-	<tr><td>8218.355</td><td>19</td><td>6</td></tr>
-	<tr><td>8460.562</td><td>20</td><td>6</td></tr>
-	<tr><td>8400.203</td><td>21</td><td>6</td></tr>
-	<tr><td>8444.838</td><td>22</td><td>6</td></tr>
-	<tr><td>8189.015</td><td>23</td><td>6</td></tr>
-	<tr><td>7973.204</td><td>24</td><td>6</td></tr>
+	<tr><td>7763.500</td><td>1</td><td>6</td></tr>
+	<tr><td>7887.279</td><td>2</td><td>6</td></tr>
+	<tr><td>7527.432</td><td>3</td><td>6</td></tr>
+	<tr><td>7326.856</td><td>4</td><td>6</td></tr>
+	<tr><td>7104.273</td><td>5</td><td>6</td></tr>
+	<tr><td>6941.924</td><td>6</td><td>6</td></tr>
 </tbody>
 </table>
 </div></div>
@@ -811,8 +741,7 @@ a 9434.748
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/demand_35_0.png" src="../../_images/demand_35_0.png" />
-</div>
+<img alt="../../_images/demand_31_0.png" src="../../_images/demand_31_0.png" />
 </div>
 </div>
 </div>
@@ -828,7 +757,8 @@ a 9434.748
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">K</span> <span class="o">&lt;-</span> <span class="m">2</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fourier decomposition</span>
+<span class="n">K</span> <span class="o">&lt;-</span> <span class="m">2</span>
 <span class="n">fuur</span> <span class="o">&lt;-</span> <span class="nf">fourier</span><span class="p">(</span><span class="n">data_msts</span><span class="p">,</span> <span class="n">K</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="n">K</span><span class="p">,</span> <span class="n">K</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -858,10 +788,12 @@ a 9434.748
 </table>
 </div></div>
 </div>
+</div>
+<div class="section" id="forecasting-the-trend-from-stl">
+<h2>forecasting the trend from STL<a class="headerlink" href="#forecasting-the-trend-from-stl" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># forecasting the trend from STL</span>
-<span class="n">trend_part</span> <span class="o">&lt;-</span> <span class="nf">ts</span><span class="p">(</span><span class="n">decomp_ts</span><span class="p">[,</span><span class="m">2</span><span class="p">])</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">trend_part</span> <span class="o">&lt;-</span> <span class="nf">ts</span><span class="p">(</span><span class="n">decomp_ts</span><span class="p">[,</span><span class="m">2</span><span class="p">])</span>
 <span class="n">trend_fit</span> <span class="o">&lt;-</span> <span class="nf">auto.arima</span><span class="p">(</span><span class="n">trend_part</span><span class="p">)</span>
 <span class="n">trend_for</span> <span class="o">&lt;-</span> <span class="nf">forecast</span><span class="p">(</span><span class="n">trend_fit</span><span class="p">,</span> <span class="n">period</span><span class="p">)</span><span class="o">$</span><span class="n">mean</span>
 </pre></div>
@@ -882,13 +814,15 @@ a 9434.748
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/demand_41_0.png" src="../../_images/demand_41_0.png" />
+<img alt="../../_images/demand_38_0.png" src="../../_images/demand_38_0.png" />
 </div>
 </div>
+</div>
+<div class="section" id="add-lag-feature">
+<h2>Add lag feature<a class="headerlink" href="#add-lag-feature" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add lag feature</span>
-<span class="n">N</span> <span class="o">&lt;-</span> <span class="nf">nrow</span><span class="p">(</span><span class="n">data_train</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">&lt;-</span> <span class="nf">nrow</span><span class="p">(</span><span class="n">data_train</span><span class="p">)</span>
 <span class="n">window</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="n">N</span> <span class="o">/</span> <span class="n">period</span><span class="p">)</span> <span class="o">-</span> <span class="m">1</span> <span class="c1"># number of days in train set minus lag</span>
  
 <span class="n">new_MKT_REQT</span> <span class="o">&lt;-</span> <span class="nf">rowSums</span><span class="p">(</span><span class="n">decomp_ts</span><span class="p">[,</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">3</span><span class="p">)])</span> <span class="c1"># detrended load</span>
@@ -978,7 +912,7 @@ a 9434.748
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The downloaded binary packages are in
-	/var/folders/47/k_hjs6l952v72vlq22ljz29w0000gn/T//RtmptCLiw5/downloaded_packages
+	/var/folders/47/k_hjs6l952v72vlq22ljz29w0000gn/T//RtmpKIkMyK/downloaded_packages
 </pre></div>
 </div>
 </div>
@@ -992,7 +926,7 @@ a 9434.748
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/demand_50_0.png" src="../../_images/demand_50_0.png" />
+<img alt="../../_images/demand_48_0.png" src="../../_images/demand_48_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1009,7 +943,7 @@ a 9434.748
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/demand_51_0.png" src="../../_images/demand_51_0.png" />
+<img alt="../../_images/demand_49_0.png" src="../../_images/demand_49_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1041,7 +975,7 @@ a 9434.748
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/demand_55_0.png" src="../../_images/demand_55_0.png" />
+<img alt="../../_images/demand_53_0.png" src="../../_images/demand_53_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1067,7 +1001,7 @@ a 9434.748
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/demand_57_0.png" src="../../_images/demand_57_0.png" />
+<img alt="../../_images/demand_55_0.png" src="../../_images/demand_55_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1116,7 +1050,7 @@ a 9434.748
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/demand_62_0.png" src="../../_images/demand_62_0.png" />
+<img alt="../../_images/demand_60_0.png" src="../../_images/demand_60_0.png" />
 </div>
 </div>
 </div>
