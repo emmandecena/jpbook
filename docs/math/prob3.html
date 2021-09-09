@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Market Network Model &#8212; Data Analytics &amp; Insights in Electricity Markets</title>
+    <title>Probability Theory &#8212; Data Analytics &amp; Insights in Electricity Markets</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -52,12 +52,14 @@
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\\\(", "\\\\)"]], "displayMath": [["$$", "$$"], ["\\[", "\\]"]], "processEscapes": true}})</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Neural Networks" href="../neuralnetworks/neuralnetworks.html" />
-    <link rel="prev" title="Market Clearing Price" href="clearingprice.html" />
+    <link rel="next" title="Statistics" href="stat.html" />
+    <link rel="prev" title="Linear Algebra" href="linalg.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -92,20 +94,20 @@
   Case Studies
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="demand.html">
-   Regional Electricity Demand
+  <a class="reference internal" href="../electricitymarkets/demand.html">
+   Forecasting Regional Electricity Demand
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="clearingprice.html">
+  <a class="reference internal" href="../electricitymarkets/clearingprice.html">
    Market Clearing Price
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Market Network Model
+ <li class="toctree-l1">
+  <a class="reference internal" href="../electricitymarkets/energymarket.html">
+   Geocoding of Market Participants
   </a>
  </li>
  <li class="toctree-l1 has-children">
@@ -216,24 +218,24 @@
   References
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../math/linalg.html">
+  <a class="reference internal" href="linalg.html">
    Linear Algebra
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../math/prob.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Probability Theory
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../math/stat.html">
+  <a class="reference internal" href="stat.html">
    Statistics
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../math/or.html">
+  <a class="reference internal" href="or.html">
    Operations Research
   </a>
  </li>
@@ -320,6 +322,31 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#probability-spaces">
+   Probability Spaces
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#general-form-of-a-linear-map">
+     General form of a Linear Map
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bibliography">
+   Bibliography
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -328,8 +355,44 @@
         
               <div>
                 
-  <div class="section" id="market-network-model">
-<h1>Market Network Model<a class="headerlink" href="#market-network-model" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="probability-theory">
+<h1>Probability Theory<a class="headerlink" href="#probability-theory" title="Permalink to this headline">¶</a></h1>
+<p><strong>Probability theory</strong> is the study of <strong>probability spaces</strong> resulting from a particular experiment or trial whose outcome is not completeley pre-determined.<span id="id1">[<a class="reference internal" href="#id17">1</a>]</span></p>
+<p>Intuitively,</p>
+<ul class="simple">
+<li><p>(i) the set of all possible outcomes of the experiment,</p></li>
+<li><p>(ii) a list of all the events which may possibly occur as consequences of the experiment,</p></li>
+<li><p>(iii) an assessment of the likelihoods of these events.</p></li>
+</ul>
+<div class="section" id="probability-spaces">
+<h2>Probability Spaces<a class="headerlink" href="#probability-spaces" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Definition</p>
+<p>A <strong>probability space</strong> is a 3-tuple $(\Omega,\mathcal{F},\mathbb{P})$ of objects such that $\lambda \in F$:</p>
+<ol class="simple">
+<li><p>a non-empty set</p></li>
+<li><p>an e</p></li>
+<li><p>test</p></li>
+</ol>
+</div>
+<div class="section" id="general-form-of-a-linear-map">
+<h3>General form of a Linear Map<a class="headerlink" href="#general-form-of-a-linear-map" title="Permalink to this headline">¶</a></h3>
+<p>$\text{Let } m, n &gt; 0 \in \mathbb{Z} \text{ and }A_{j,k} \in F \text{ for } j = 1, \ldots ,m \text{ and } k = 1,…,n.$</p>
+<p>$\text{A linear map } T \text{ from the set of all linear maps } \mathcal{L}(F^{n},F^{m}) \text{ has the general form: }$</p>
+<div class="math notranslate nohighlight" id="equation-linearmapgeneralform">
+<span class="eqno">(3)<a class="headerlink" href="#equation-linearmapgeneralform" title="Permalink to this equation">¶</a></span>\[T(x_{1},...,x_{n}) = (A_{1,1} x_{1}+ \cdots +A_{1,n} x_{n}, \ldots , A_{m,1} x_{1}+ \cdots +A_{m,n} x_{n})\]</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="bibliography">
+<h2>Bibliography<a class="headerlink" href="#bibliography" title="Permalink to this headline">¶</a></h2>
+<p id="id2"><dl class="citation">
+<dt class="label" id="id17"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Geoffrey Grimmett and Dominic Welsh. <em>Probability: an introduction</em>. Oxford University Press, 2014.</p>
+</dd>
+</dl>
+</p>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -345,7 +408,7 @@
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./docs/electricitymarkets"
+            path: "./docs/math"
         },
         predefinedOutput: true
     }
@@ -357,8 +420,8 @@
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="clearingprice.html" title="previous page">Market Clearing Price</a>
-    <a class='right-next' id="next-link" href="../neuralnetworks/neuralnetworks.html" title="next page">Neural Networks</a>
+    <a class='left-prev' id="prev-link" href="linalg.html" title="previous page">Linear Algebra</a>
+    <a class='right-next' id="next-link" href="stat.html" title="next page">Statistics</a>
 
         </div>
         
