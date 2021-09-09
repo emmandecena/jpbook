@@ -44,7 +44,7 @@ sphinx:
     mathjax_path: https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML
     mathjax_config:
       tex2jax:
-        inlineMath: [ ['$','$'], ["\\(","\\)"] ]
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
         displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
         processEscapes: true
     myst_update_mathjax: false

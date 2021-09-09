@@ -29,7 +29,7 @@ parts:
 - caption: References
   chapters:
   - file: docs/math/linalg
-  - file: docs/math/prob
+  - file: docs/math/prob3
   - file: docs/math/stat
   - file: docs/math/or
 - caption: Utilities

@@ -35,8 +35,8 @@ plot(forecast(fit, 24))
 
 
 # Automated forecasting using an ARIMA model
-fit <- auto.arima(data_ts)
-plot(forecast(fit, 5))
+#fit <- auto.arima(data_ts)
+#plot(forecast(fit, 5))
 
 
 plot(forecast(fit, 24))

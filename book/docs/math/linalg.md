@@ -239,6 +239,7 @@ In addition, the concept of **angle between vectors** is defined using the notio
 #### Orthogonality
 ---
 
+
 ## Bibliography
 
 ```{bibliography} ../../_bibliography/references.bib
