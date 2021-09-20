@@ -1,13 +1,17 @@
 # Info
 
-Hello! I'm Emmanuel, a Philippine-based **R/Python developer** and **Data analyst** specializing in energy markets and related industries. 
+Hello! I'm Emmanuel, a Philippine-based **Data Scientist** specializing in energy markets and related industries. 
 
 <!-- 
 I provide end-to-end solutions for data analytics teams - from finding opportunities for product and process optimization, to the deployment of data-driven applications to help users **make better decisions**.
 -->
 ## Background and experience
 
-My technical background comes from over six (6) years of experience and advanced training in the energy industry: from electricity market trading and dispatch operations of thermal power plants to electrical systems design of gas processing plants. I obtained my postgraduate degree in energy from the University of Auckland, under full scholarship. See my <a href="https://drive.google.com/file/d/1Pi25B_6wbRiwFJuYqC-i7SzUU0ML7yVC/view?usp=sharing" target="_blank">**resume**</a> for more details.
+My technical background comes from over six (6) years of experience and advanced training in the energy industry: from electricity market trading and dispatch operations of thermal power plants to electrical systems design of gas processing plants. I obtained my postgraduate degree in energy from the University of Auckland, under full scholarship. 
+
+<!-- 
+See my <a href="https://drive.google.com/file/d/1Pi25B_6wbRiwFJuYqC-i7SzUU0ML7yVC/view?usp=sharing" target="_blank">**resume**</a> for more details.
+-->
 
 ```{image} ../../images/id.jpg
 :alt: ID

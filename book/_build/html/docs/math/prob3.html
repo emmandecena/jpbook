@@ -328,6 +328,21 @@
             <nav id="bd-toc-nav">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#intuition">
+   Intuition
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#event-spaces">
+   Event Spaces
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#probability-measure">
+   Probability Measure
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#probability-spaces">
    Probability Spaces
   </a>
@@ -357,24 +372,49 @@
                 
   <div class="section" id="probability-theory">
 <h1>Probability Theory<a class="headerlink" href="#probability-theory" title="Permalink to this headline">¶</a></h1>
-<p><strong>Probability theory</strong> is the study of <strong>probability spaces</strong> resulting from a particular experiment or trial whose outcome is not completeley pre-determined.<span id="id1">[<a class="reference internal" href="#id17">1</a>]</span></p>
-<p>Intuitively,</p>
+<p><strong>Probability theory</strong> is the study of <strong>probability spaces</strong> resulting from a particular <em><strong>experiment</strong></em> or <em><strong>trial</strong></em> whose <em><strong>outcome</strong></em> or <em><strong>events</strong></em> are not completeley pre-determined <span id="id1">[<a class="reference internal" href="#id17">1</a>]</span>.</p>
+<p>Intuitively, doing a <strong>particular experiment</strong> gives rise to a <strong>probability space</strong> consisting of:</p>
 <ul class="simple">
-<li><p>(i) the set of all possible outcomes of the experiment,</p></li>
-<li><p>(ii) a list of all the events which may possibly occur as consequences of the experiment,</p></li>
-<li><p>(iii) an assessment of the likelihoods of these events.</p></li>
+<li><p>(i) the <strong>set of all</strong> possible <strong>outcomes</strong> or <strong>events</strong> of the experiment,</p></li>
+<li><p>(ii) a <strong>subset of particular events</strong> which can occur resulting from the experiment</p></li>
+<li><p>(iii) a <strong>measure of the likelihoods</strong> of these events.</p></li>
 </ul>
-<div class="section" id="probability-spaces">
-<h2>Probability Spaces<a class="headerlink" href="#probability-spaces" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="intuition">
+<h2>Intuition<a class="headerlink" href="#intuition" title="Permalink to this headline">¶</a></h2>
+<p>We denote a paricular experiment as $\mathcal{E}$. We define the set of all outcomes resulting from $\mathcal{E}$ is denoted as $\Omega$. A particular event which is a member of $\Omega$ is denoted as $\omega$.</p>
+<p>For example, suppose an experiment consists of picking a random ball from a container with 10 balls, numbered from 1 to 10. We denote:</p>
+<ul class="simple">
+<li><p>$\mathcal{E}$ - picking a single ball</p></li>
+<li><p>$\Omega$ - $ \{ 1,2,3,4,5,6,7,8,9,10 \} $</p></li>
+</ul>
+<p>We can then define <strong>events</strong> which are interesting to us, as <strong>subsets</strong> of $\Omega$. For example, we can define the events of picking an even-numbered ball as the subset $ \{ 2,4,6,8,10 \} $.</p>
+<p>The connection between <strong>events</strong> as <strong>subsets</strong> is intuitive. For instance, if we define $A$ and $B$ as subsets of $\Omega$, then:</p>
+<ul class="simple">
+<li><p>$A \cup B $ can correspond to the event of either A or B event occur</p></li>
+<li><p>$A \cap B $ can correspond to the event of both A or B event occur</p></li>
+</ul>
+<p>More generally, if $A_1, A_2, \dots, A_n $ are events, then the union of all subsets $\bigcup\limits_{i=1}^{\infty} A_{i}$ can be defined as $A_i$ occurring for some $i$.</p>
+<p>Similarly, the intersection of all subsets $\bigcap\limits_{i=1}^{\infty} A_{i}$ can be defined as $A_i$ occurring for all $i$.</p>
+</div>
+<div class="section" id="event-spaces">
+<h2>Event Spaces<a class="headerlink" href="#event-spaces" title="Permalink to this headline">¶</a></h2>
+<p>From the <strong>subsets</strong> of $\Omega$ which are interesting for our purposes, we define a <strong>collection of subsets</strong> $\mathcal{F} = \{ A_i : i \in I \} $ where each $A \in \mathcal{F}$ is called an <strong>event</strong>.</p>
+<p>Thus, we define $\mathcal{F}$ formally as a mathematical space below:</p>
 <div class="admonition-definition admonition">
 <p class="admonition-title">Definition</p>
-<p>A <strong>probability space</strong> is a 3-tuple $(\Omega,\mathcal{F},\mathbb{P})$ of objects such that $\lambda \in F$:</p>
+<p>A collection $\mathcal{F}$ of subsets of the sample space $\Omega$ is called an <strong>event space</strong> if:</p>
 <ol class="simple">
-<li><p>a non-empty set</p></li>
-<li><p>an e</p></li>
+<li><p>$\mathcal{F}$ is non-empty</p></li>
+<li><p>If $A \in \mathcal{F}$, then $\Omega \backslash A \in \mathcal{F}$</p></li>
 <li><p>test</p></li>
 </ol>
 </div>
+</div>
+<div class="section" id="probability-measure">
+<h2>Probability Measure<a class="headerlink" href="#probability-measure" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="probability-spaces">
+<h2>Probability Spaces<a class="headerlink" href="#probability-spaces" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="general-form-of-a-linear-map">
 <h3>General form of a Linear Map<a class="headerlink" href="#general-form-of-a-linear-map" title="Permalink to this headline">¶</a></h3>
 <p>$\text{Let } m, n &gt; 0 \in \mathbb{Z} \text{ and }A_{j,k} \in F \text{ for } j = 1, \ldots ,m \text{ and } k = 1,…,n.$</p>

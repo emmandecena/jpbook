@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"html.format.enable": false,
+		"markdown-preview-enhanced.printBackground": false,
+		"markdown-preview-enhanced.mermaidTheme": "forest",
+		"markdown-preview-enhanced.revealjsTheme": "simple.css",
+		"[markdown]": {
+
+			"editor.wordWrap": "on",
+			"editor.quickSuggestions": false
+		},
+		"markdown-preview-enhanced.codeBlockTheme": "default.css"
+	}
+}
