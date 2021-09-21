@@ -189,7 +189,7 @@ df_min_day = df_min[df_min['COMMODITY_TYPE']=='En'].resample('1D').mean()
 # 
 # Need to do per region to give unique index
 
-# # Plotting
+# ## Plotting
 
 # ### Stacked plot
 # 

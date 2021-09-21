@@ -19,6 +19,7 @@ parts:
       - file: docs/datasets/philenergy/datamps
       - file: docs/datasets/philenergy/dataclearingprice
       - file: docs/datasets/philenergy/dataregionaldemand
+    - file: docs/datasets/hrdatasetv14
 - caption: Optimization
   chapters:
   - file: docs/opti/lp
@@ -38,6 +39,13 @@ parts:
   - file: docs/utility/plotting
   - file: docs/utility/numpy
   - file: docs/visualization/tableau
+- caption: Blog
+  chapters:
+  - file: docs/blog/blog
+    sections:
+    - file: docs/blog/postlist/edatemplate
+    - file: docs/blog/postlist/sqlds
+    - file: docs/blog/postlist/dataextract
 - caption: Contact me
   chapters:
   - file: docs/about/contact

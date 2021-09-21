@@ -1,6 +1,6 @@
 # Info
 
-Hello! I'm Emmanuel, a Philippine-based **Data Scientist** specializing in energy markets and related industries. 
+Hello! I'm Emmanuel, a Philippine-based **Data Scientist** with experience in energy markets and related industries. 
 
 <!-- 
 I provide end-to-end solutions for data analytics teams - from finding opportunities for product and process optimization, to the deployment of data-driven applications to help users **make better decisions**.
@@ -19,6 +19,11 @@ See my <a href="https://drive.google.com/file/d/1Pi25B_6wbRiwFJuYqC-i7SzUU0ML7yV
 :width: 200px
 :align: center
 ```
+
+### Let's connect
+
+I'd like to discuss and hear your thoughts for this site! Feel free to connect with me through [LinkedIn](https://linkedin.com/in/emmanuel-d-a09a2094).
+
 
 <!-- 
 ### Let's talk
